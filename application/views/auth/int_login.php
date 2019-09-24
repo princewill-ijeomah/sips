@@ -22,20 +22,20 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
         <!-- Remove Tap Highlight on Windows Phone IE -->
         <meta name="msapplication-tap-highlight" content="no">
         <!-- base css -->
-        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/css/vendors.bundle.css">
-        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/css/app.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/css/vendors.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/css/app.bundle.css">
         <!-- Place favicon.ico in the root directory -->
-        <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>assets/img/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/img/favicon/favicon-32x32.png">
-        <link rel="mask-icon" href="<?= base_url() ?>assets/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>assets/internal/img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/internal/img/favicon/favicon-32x32.png">
+        <link rel="mask-icon" href="<?= base_url() ?>assets/internal/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
         <!-- Optional: page related CSS-->
-        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/css/page-login.css">
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/css/page-login.css">
     </head>
     <body>
         <div class="blankpage-form-field">
             <div class="page-logo m-0 w-100 align-items-center justify-content-center rounded border-bottom-left-radius-0 border-bottom-right-radius-0 px-4">
                 <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
-                    <img src="<?= base_url() ?>assets/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                    <img src="<?= base_url() ?>assets/internal/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
                     <span class="page-logo-text mr-1">SmartAdmin WebApp</span>
                     <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
                 </a>
@@ -76,9 +76,9 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                 </div>
             </div>
         </div>
-        <video poster="<?= base_url() ?>assets/img/backgrounds/clouds.png" id="bgvid" playsinline autoplay muted loop>
-            <source src="<?= base_url() ?>assets/media/video/cc.webm" type="video/webm">
-            <source src="<?= base_url() ?>assets/media/video/cc.mp4" type="video/mp4">
+        <video poster="<?= base_url() ?>assets/internal/img/backgrounds/clouds.png" id="bgvid" playsinline autoplay muted loop>
+            <source src="<?= base_url() ?>assets/internal/media/video/cc.webm" type="video/webm">
+            <source src="<?= base_url() ?>assets/internal/media/video/cc.mp4" type="video/mp4">
         </video>
         <!-- base vendor bundle: 
 			 DOC: if you remove pace.js from core please note on Internet Explorer some CSS animations may execute before a page is fully loaded, resulting 'jump' animations 
@@ -93,8 +93,8 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
 						+ waves.js (extension)
 						+ smartpanels.js (extension)
 						+ src/../jquery-snippets.js (core) -->
-        <script src="<?= base_url() ?>assets/js/vendors.bundle.js"></script>
-        <script src="<?= base_url() ?>assets/js/app.bundle.js"></script>
+        <script src="<?= base_url() ?>assets/internal/js/vendors.bundle.js"></script>
+        <script src="<?= base_url() ?>assets/internal/js/app.bundle.js"></script>
         <!-- Page related scripts -->
     </body>
 </html>
