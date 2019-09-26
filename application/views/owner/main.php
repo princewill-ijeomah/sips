@@ -19,7 +19,7 @@
 
         <script src="<?= base_url() ?>src/additional.js"></script>
     </head>
-    <body class="mod-bg-1 ">
+    <body class="mod-bg-1">
         <script>
             /**
              *	This script should be placed right after the body tag for fast execution 

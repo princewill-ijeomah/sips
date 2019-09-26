@@ -126,7 +126,7 @@ $config['rest_auth'] = 'basic';
 | Note: If 'rest_auth' is set to 'session' then change 'auth_source' to the name of the session variable
 |
 */
-$config['auth_source'] = 'ldap';
+$config['auth_source'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -562,7 +562,8 @@ $config['allowed_cors_headers'] = [
   'Content-Type',
   'Accept',
   'Access-Control-Request-Method',
-  'SIPS-KEY',
+  'INT-SIPS-KEY',
+  'EXT-SIPS-KEY',
   'Authorization'
 ];
 

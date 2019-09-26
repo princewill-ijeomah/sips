@@ -22,14 +22,14 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
         <!-- Remove Tap Highlight on Windows Phone IE -->
         <meta name="msapplication-tap-highlight" content="no">
         <!-- base css -->
-        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/css/vendors.bundle.css">
-        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/css/app.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/vendors.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/app.bundle.css">
         <!-- Place favicon.ico in the root directory -->
-        <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>assets/internal/img/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/internal/img/favicon/favicon-32x32.png">
-        <link rel="mask-icon" href="<?= base_url() ?>assets/internal/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>assets/internal/dist/img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/internal/dist/img/favicon/favicon-32x32.png">
+        <link rel="mask-icon" href="<?= base_url() ?>assets/internal/dist/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
         <!-- Optional: page related CSS-->
-        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/css/fa-brands.css">
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/fa-brands.css">
     </head>
     <body>
         <div class="page-wrapper">
@@ -39,7 +39,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                         <div class="d-flex align-items-center container p-0">
                             <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9">
                                 <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
-                                    <img src="<?= base_url() ?>assets/internal/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                                    <img src="<?= base_url() ?>assets/internal/dist/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
                                     <span class="page-logo-text mr-1">SmartAdmin WebApp</span>
                                 </a>
                             </div>
@@ -48,7 +48,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                             </a>
                         </div>
                     </div>
-                    <div class="flex-1" style="background: url(<?= base_url() ?>assets/internal/img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
+                    <div class="flex-1" style="background: url(<?= base_url() ?>assets/internal/dist/img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
                         <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
                             <div class="row">
                                 <div class="col col-md-6 col-lg-7 hidden-sm-down">
@@ -136,8 +136,8 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
 						+ waves.js (extension)
 						+ smartpanels.js (extension)
 						+ src/../jquery-snippets.js (core) -->
-        <script src="<?= base_url() ?>assets/internal/js/vendors.bundle.js"></script>
-        <script src="<?= base_url() ?>assets/internal/js/app.bundle.js"></script>
+        <script src="<?= base_url() ?>assets/internal/dist/js/vendors.bundle.js"></script>
+        <script src="<?= base_url() ?>assets/internal/dist/js/app.bundle.js"></script>
         <script>
             $("#js-login-btn").click(function(event)
             {
