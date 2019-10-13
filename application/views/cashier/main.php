@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>
-            Admin | SIPS
+            Cashier | SIPS
         </title>
         <meta name="description" content="Page Titile">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,16 @@
         <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/internal/dist/img/favicon/favicon-32x32.png">
         <link rel="mask-icon" href="<?= base_url() ?>assets/internal/dist/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/notifications/toastr/toastr.css">
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/datagrid/datatables/datatables.bundle.css">
+
         <script src="<?= base_url() ?>src/additional.js"></script>
+
+        <style>
+            .error {
+                color: red;
+            }
+        </style>
     </head>
     <body class="mod-bg-1 ">
         <script>
@@ -257,7 +266,12 @@
         
         <script src="<?= base_url() ?>assets/internal/dist/js/vendors.bundle.js"></script>
         <script src="<?= base_url() ?>assets/internal/dist/js/app.bundle.js"></script>
+
         <script src="<?= base_url() ?>assets/internal/dist/js/block-ui/jquery.blockUI.js"></script>
+        <script src="<?= base_url() ?>assets/internal/dist/js/formplugins/jquery-validation/jquery.validate.min.js"></script>
+        <script src="<?= base_url() ?>assets/internal/dist/js/notifications/toastr/toastr.js"></script>
+        <script src="<?= base_url() ?>assets/internal/dist/js/datagrid/datatables/datatables.bundle.js"></script>
+        
         <script src="<?= base_url() ?>src/cashier/main.js"></script>
     </body>
 </html>

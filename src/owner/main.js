@@ -9,6 +9,24 @@ $(function () {
 
     const mainController = ((UI) => {
 
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": 300,
+            "hideDuration": 100,
+            "timeOut": 5000,
+            "extendedTimeOut": 1000,
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "slideDown",
+            "hideMethod": "slideUp"
+        }
+
         const loadContent = path => {
             $.ajax({
                 url: `${BASE_URL}owner/${path}`,
@@ -53,10 +71,6 @@ $(function () {
 
                 loadContent(path);
             });
-        }
-
-        const eventListener = () => {
-
         }
 
         return {

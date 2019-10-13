@@ -53,6 +53,9 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = true;
 
+$route['cashier/product/add'] = 'cashier/add_product';
+$route['cashier/product/edit/(:any)'] = 'cashier/edit_product/$1';
+
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

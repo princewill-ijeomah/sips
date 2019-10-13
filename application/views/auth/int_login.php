@@ -12,7 +12,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
     <head>
         <meta charset="utf-8">
         <title>
-            Login - - SmartAdmin v4.0.1
+            Login | Duta Gym
         </title>
         <meta name="description" content="Login">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,71 +30,57 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
         <link rel="mask-icon" href="<?= base_url() ?>assets/internal/dist/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
         <!-- Optional: page related CSS-->
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/page-login.css">
+
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/notifications/toastr/toastr.css">
+
+
+        <script src="<?= base_url() ?>src/additional.js"></script>
+
+        <style>
+            .error {
+                color: red;
+            }
+        </style>
     </head>
     <body>
-        <div class="blankpage-form-field">
+        <div class="blankpage-form-field" id="container_login">
             <div class="page-logo m-0 w-100 align-items-center justify-content-center rounded border-bottom-left-radius-0 border-bottom-right-radius-0 px-4">
                 <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
                     <img src="<?= base_url() ?>assets/internal/dist/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
-                    <span class="page-logo-text mr-1">SmartAdmin WebApp</span>
-                    <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
+                    <span class="page-logo-text mr-1">Duta Gym Administrator</span>
                 </a>
             </div>
             <div class="card p-4 border-top-left-radius-0 border-top-right-radius-0">
-                <form action="intel_introduction.html">
+                <form id="form_login">
                     <div class="form-group">
                         <label class="form-label" for="username">Username</label>
-                        <input type="email" id="username" class="form-control" placeholder="your id or email" value="drlantern@gotbootstrap.com">
-                        <span class="help-block">
-                            Your unique username to app
-                        </span>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Silahkan isi dengan username">
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="password">Password</label>
-                        <input type="password" id="password" class="form-control" placeholder="password" value="password123">
-                        <span class="help-block">
-                            Your password
-                        </span>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Silahkan isi dengan password">
                     </div>
                     <div class="form-group text-left">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="rememberme">
-                            <label class="custom-control-label" for="rememberme"> Remember me for the next 30 days</label>
+                            <input type="checkbox" class="custom-control-input" id="show_pass">
+                            <label class="custom-control-label" for="rememberme"> Lihat Password</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default float-right">Secure login</button>
+                    <button type="submit" class="btn btn-default float-right">Login</button>
                 </form>
-            </div>
-            <div class="blankpage-footer text-center">
-                <a href="#"><strong>Recover Password</strong></a> | <a href="#"><strong>Register Account</strong></a>
-            </div>
-        </div>
-        <div class="login-footer p-2">
-            <div class="row">
-                <div class="col col-sm-12 text-center">
-                    <i><strong>System Message:</strong> You were logged out from 198.164.246.1 on Saturday, March, 2017 at 10.56AM</i>
-                </div>
             </div>
         </div>
         <video poster="<?= base_url() ?>assets/internal/dist/img/backgrounds/clouds.png" id="bgvid" playsinline autoplay muted loop>
             <source src="<?= base_url() ?>assets/internal/dist/media/video/cc.webm" type="video/webm">
             <source src="<?= base_url() ?>assets/internal/dist/media/video/cc.mp4" type="video/mp4">
         </video>
-        <!-- base vendor bundle: 
-			 DOC: if you remove pace.js from core please note on Internet Explorer some CSS animations may execute before a page is fully loaded, resulting 'jump' animations 
-						+ pace.js (recommended)
-						+ jquery.js (core)
-						+ jquery-ui-cust.js (core)
-						+ popper.js (core)
-						+ bootstrap.js (core)
-						+ slimscroll.js (extension)
-						+ app.navigation.js (core)
-						+ ba-throttle-debounce.js (core)
-						+ waves.js (extension)
-						+ smartpanels.js (extension)
-						+ src/../jquery-snippets.js (core) -->
+
         <script src="<?= base_url() ?>assets/internal/dist/js/vendors.bundle.js"></script>
         <script src="<?= base_url() ?>assets/internal/dist/js/app.bundle.js"></script>
+        <script src="<?= base_url() ?>assets/internal/dist/js/block-ui/jquery.blockUI.js"></script>
+        <script src="<?= base_url() ?>assets/internal/dist/js/formplugins/jquery-validation/jquery.validate.min.js"></script>
+        <script src="<?= base_url() ?>assets/internal/dist/js/notifications/toastr/toastr.js"></script>
+        <script src="<?= base_url() ?>src/auth/int_login.js"></script>
         <!-- Page related scripts -->
     </body>
 </html>

@@ -7,27 +7,70 @@
     <h1 class="subheader-title">
         <i class='subheader-icon fal fa-'></i> Konfirmasi 
     </h1>
-    <div class="subheader-block">
-        Right content of header
-    </div>
 </div>
-<div class="alert alert-primary">
-    <div class="d-flex flex-start w-100">
-        <div class="mr-2 hidden-md-down">
-            <span class="icon-stack icon-stack-lg">
-                <i class="base base-6 icon-stack-3x opacity-100 color-primary-500"></i>
-                <i class="base base-10 icon-stack-2x opacity-100 color-primary-300 fa-flip-vertical"></i>
-                <i class="ni ni-blog-read icon-stack-1x opacity-100 color-white"></i>
-            </span>
-        </div>
-        <div class="d-flex flex-fill">
-            <div class="flex-fill">
-                <span class="h5">About</span>
-                <p>Points.</p>
-                <p class="m-0">
-                    Find in-depth, guidelines, tutorials and more on Addon's <a href="javascript:void(0)" target="_blank">Official Documentation</a>
-                </p>
+<div class="row">
+    <div class="col-md-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2>
+                    Data Konfirmasi Pembayaran
+                </h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <table class="table table-bordered table-hover table-striped w-100" id="t_konfirmasi">
+                        <thead>
+                            <tr>
+                                <th>KonfirmasiNo</th>
+                                <th>TrxNo</th>
+                                <th>Bank</th>
+                                <th>Bank.Pengirim</th>
+                                <th>No.Rekening</th>
+                                <th>Nama.Pengirim</th>
+                                <th>Tgl.Transfer</th>
+                                <th>Status</th>
+                                <th>Jml.Transfer</th>
+                                <th>Foto</th>
+                                <th>Tgl.Konfirmasi</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<form id="form_validasi">
+    <div id="modal_validasi" class="modal modal-alert fade" id="example-modal-alert" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Validasi Pembayaran</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda yakin validasi pembayaran ini <code id="code_validasi">...</code> ?
+                    <input type="hidden" name="no_konfirmasi" id="validasi_no_konfirmasi">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Ya</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $.getScript(`${BASE_URL}src/cashier/konfirmasi/data.js`)
+</script>

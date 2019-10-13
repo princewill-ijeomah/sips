@@ -23,6 +23,16 @@ class Cashier extends CI_Controller {
 	{
 		$this->load->view('cashier/product/data');
 	}
+
+	public function add_product()
+	{
+		$this->load->view('cashier/product/add');
+	}
+
+	public function edit_product($id)
+	{
+		$this->load->view('cashier/product/edit', array('id_product' => $id));
+	}
 	
     public function customer()
 	{

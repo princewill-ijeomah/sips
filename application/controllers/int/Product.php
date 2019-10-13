@@ -45,7 +45,7 @@ class Product extends CI_Controller {
                 $json_p['weight'] = $key->weight;
                 $json_p['harga'] = $key->harga;
                 $json_p['deskripsi'] = $key->deskripsi;
-                $json_p['foto'] = base_url('document/foto/').$key->foto;
+                $json_p['foto'] = base_url('document/product/').$key->foto;
                 $json_p['kriteria'] = array();
 
                 $kriteria = $this->KriteriaModel->fetch(array())->result();

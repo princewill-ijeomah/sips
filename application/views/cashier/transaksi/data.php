@@ -7,27 +7,41 @@
     <h1 class="subheader-title">
         <i class='subheader-icon fal fa-'></i> Transaksi 
     </h1>
-    <div class="subheader-block">
-        Right content of header
-    </div>
 </div>
-<div class="alert alert-primary">
-    <div class="d-flex flex-start w-100">
-        <div class="mr-2 hidden-md-down">
-            <span class="icon-stack icon-stack-lg">
-                <i class="base base-6 icon-stack-3x opacity-100 color-primary-500"></i>
-                <i class="base base-10 icon-stack-2x opacity-100 color-primary-300 fa-flip-vertical"></i>
-                <i class="ni ni-blog-read icon-stack-1x opacity-100 color-white"></i>
-            </span>
-        </div>
-        <div class="d-flex flex-fill">
-            <div class="flex-fill">
-                <span class="h5">About</span>
-                <p>Points.</p>
-                <p class="m-0">
-                    Find in-depth, guidelines, tutorials and more on Addon's <a href="javascript:void(0)" target="_blank">Official Documentation</a>
-                </p>
+<div class="row">
+    <div class="col-md-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2>
+                    Data Transaksi
+                </h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <table class="table table-bordered table-hover table-striped w-100" id="t_transaksi">
+                        <thead>
+                            <tr>
+                                <th>TrxNo</th>
+                                <th>Customer</th>
+                                <th>Alamat Kirim</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                                <th>Tgl Transaksi</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $.getScript(`${BASE_URL}src/cashier/transaksi/data.js`)
+</script>
