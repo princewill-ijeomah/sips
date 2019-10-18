@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 22 Sep 2019 pada 18.54
--- Versi server: 10.1.40-MariaDB
--- Versi PHP: 7.1.29
+-- Host: localhost
+-- Waktu pembuatan: 18 Okt 2019 pada 02.28
+-- Versi server: 10.4.6-MariaDB
+-- Versi PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -38,9 +38,16 @@ CREATE TABLE `konfirmasi` (
   `tgl_transfer` date NOT NULL,
   `jml_transfer` int(11) NOT NULL,
   `foto` text NOT NULL,
-  `tgl_input` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `tgl_input` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `valid` enum('Y','T') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `konfirmasi`
+--
+
+INSERT INTO `konfirmasi` (`no_konfirmasi`, `no_transaksi`, `bank`, `bank_pengirim`, `rekening_pengirim`, `nama_pengirim`, `tgl_transfer`, `jml_transfer`, `foto`, `tgl_input`, `valid`) VALUES
+('KNF-0000001', 'TRX-0000001', '123123123', 'BCA', '123123123', 'Hadji', '2019-10-07', 75000, 'test.jpg', '2019-10-07 08:37:21', 'Y');
 
 -- --------------------------------------------------------
 
@@ -52,6 +59,14 @@ CREATE TABLE `kriteria` (
   `id_kriteria` int(2) NOT NULL,
   `nama_kriteria` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kriteria`
+--
+
+INSERT INTO `kriteria` (`id_kriteria`, `nama_kriteria`) VALUES
+(12, 'Cobaaaaa'),
+(13, 'Yeeeaaahhhh');
 
 -- --------------------------------------------------------
 
@@ -68,6 +83,13 @@ CREATE TABLE `product` (
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `product`
+--
+
+INSERT INTO `product` (`id_product`, `nama_product`, `weight`, `harga`, `deskripsi`, `foto`) VALUES
+('PR-00000001', 'Cobaaa', 123, 25000, 'Test', 'test.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -78,6 +100,14 @@ CREATE TABLE `product_subkriteria` (
   `id_product` varchar(11) NOT NULL,
   `id_subkriteria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `product_subkriteria`
+--
+
+INSERT INTO `product_subkriteria` (`id_product`, `id_subkriteria`) VALUES
+('PR-00000001', 15),
+('PR-00000001', 10);
 
 -- --------------------------------------------------------
 
@@ -91,6 +121,16 @@ CREATE TABLE `subkriteria` (
   `nama_subkriteria` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `subkriteria`
+--
+
+INSERT INTO `subkriteria` (`id_subkriteria`, `id_kriteria`, `nama_subkriteria`) VALUES
+(9, 13, 'Cobaaaa'),
+(10, 13, 'Yaaaa'),
+(14, 12, 'Cobaaa'),
+(15, 12, 'Bahaya Banget');
+
 -- --------------------------------------------------------
 
 --
@@ -102,8 +142,15 @@ CREATE TABLE `transaksi` (
   `id_user` varchar(11) NOT NULL,
   `alamat_kirim` text NOT NULL,
   `status` enum('Belum Dibayar','Dibayar') NOT NULL,
-  `tgl_transaksi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `tgl_transaksi` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`no_transaksi`, `id_user`, `alamat_kirim`, `status`, `tgl_transaksi`) VALUES
+('TRX-0000001', 'USR-0000002', 'Jl. Jakarta yaaaaa', 'Dibayar', '2019-10-07 08:37:21');
 
 -- --------------------------------------------------------
 
@@ -118,6 +165,14 @@ CREATE TABLE `transaksi_detail` (
   `qty` int(3) NOT NULL,
   `total_harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `transaksi_detail`
+--
+
+INSERT INTO `transaksi_detail` (`no_transaksi`, `id_product`, `harga_satuan`, `qty`, `total_harga`) VALUES
+('TRX-0000001', 'PR-00000001', 25000, 2, 50000),
+('TRX-0000001', 'PR-00000001', 30000, 5, 150000);
 
 -- --------------------------------------------------------
 
@@ -136,8 +191,18 @@ CREATE TABLE `user` (
   `username` varchar(15) NOT NULL,
   `password` varchar(255) NOT NULL,
   `aktif` enum('Y','T') NOT NULL,
-  `tgl_registrasi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `level` enum('Owner','Cashier','Customer') NOT NULL,
+  `tgl_registrasi` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id_user`, `nama_lengkap`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `telepon`, `email`, `username`, `password`, `aktif`, `level`, `tgl_registrasi`) VALUES
+('USR-0000001', 'Vicky Kurnia', 'P', '2019-09-25', 'Jakarta Barat', '08987748441', 'viz.ndinq@gmail.com', 'vicky', 'e79cab55eab4c0a1a63610829a51fd51d5cfb294', 'Y', 'Owner', '2019-09-25 07:57:15'),
+('USR-0000002', 'Haviz Indra Maulana', 'L', '1992-10-10', 'Jakarta', '08987748441', 'haviz_im@outlook.com', 'havizIM', '9a64164ce3c1429c5854559980c24b84634f5681', 'Y', 'Customer', '2019-09-25 11:22:05'),
+('USR-0000003', 'Dian Ratna Sari Maulana', 'P', '1992-10-10', 'Tanah Sereal, Tambora, Jakarta Barat', '08987748441', 'dianrs19@gmail.com', 'dianrs', 'e2baa50d717f2e8d7e04c8bdc5d22ba737d01376', 'Y', 'Cashier', '2019-10-02 22:47:45');
 
 --
 -- Indexes for dumped tables
@@ -197,6 +262,22 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `kriteria`
+--
+ALTER TABLE `kriteria`
+  MODIFY `id_kriteria` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT untuk tabel `subkriteria`
+--
+ALTER TABLE `subkriteria`
+  MODIFY `id_subkriteria` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
@@ -210,14 +291,14 @@ ALTER TABLE `konfirmasi`
 -- Ketidakleluasaan untuk tabel `product_subkriteria`
 --
 ALTER TABLE `product_subkriteria`
-  ADD CONSTRAINT `product_subkriteria_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`),
-  ADD CONSTRAINT `product_subkriteria_ibfk_2` FOREIGN KEY (`id_subkriteria`) REFERENCES `subkriteria` (`id_subkriteria`);
+  ADD CONSTRAINT `product_subkriteria_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `product_subkriteria_ibfk_2` FOREIGN KEY (`id_subkriteria`) REFERENCES `subkriteria` (`id_subkriteria`) ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `subkriteria`
 --
 ALTER TABLE `subkriteria`
-  ADD CONSTRAINT `subkriteria_ibfk_1` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id_kriteria`);
+  ADD CONSTRAINT `subkriteria_ibfk_1` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id_kriteria`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `transaksi`
