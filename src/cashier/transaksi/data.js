@@ -62,7 +62,7 @@ $(function(){
                     let {detail} = row
 
                     let total = detail.reduce((a, b) => a + parseInt(b.total_harga), 0)
-                    return total;
+                    return `Rp. ${total.toLocaleString(['ban', 'id'])}`;
                 }
             },
             {

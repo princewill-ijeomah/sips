@@ -21,26 +21,27 @@
                 <div class="panel-toolbar">
                     <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
                     <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
-                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
                 </div>
             </div>
             <div class="panel-container show">
                 <div class="panel-content">
-                    <table class="table table-bordered table-hover table-striped w-100" id="t_product">
-                        <thead>
-                            <tr>
-                                <th>ProductID</th>
-                                <th>Nama</th>
-                                <th>Berat</th>
-                                <th>Harga</th>
-                                <th>Foto</th>
-                                <th>Deskripsi</th>
-                                <th>Subkriteria</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped w-100" id="t_product">
+                            <thead>
+                                <tr>
+                                    <th>ProductID</th>
+                                    <th>Nama</th>
+                                    <th>Berat</th>
+                                    <th>Harga</th>
+                                    <th>Deskripsi</th>
+                                    <th>Subkriteria</th>
+                                    <th>Foto</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

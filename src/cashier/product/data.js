@@ -77,19 +77,14 @@ $(function(){
                 data: "weight"
             },
             {
-                data: "harga"
-            },
-            {
                 data: null, render: (data, type, row) => {
-                    return `
-                        <a href="${row.foto}" target="__blank">
-                            <img src="${row.foto}" alt="Gambar Product">
-                        </a>
-                    `
+                    return `Rp. ${parseInt(row.harga).toLocaleString(['ban', 'id'])}`
                 }
             },
             {
-                data: "deskripsi"
+                data: null, render: (data, type, row) => {
+                    return row.deskripsi.replace(/(\r\n|\n|\r)/gm, '<br>')
+                }
             },
             {
                 data: null, render: (data, type, row) => {
@@ -103,6 +98,15 @@ $(function(){
                     })
 
                     return html;
+                }
+            },
+            {
+                data: null, render: (data, type, row) => {
+                    return `
+                        <a href="${row.foto}" target="__blank">
+                            <span class="rounded-circle profile-image d-block" style="background-image:url('${row.foto}'); background-size: cover;"></span>
+                        </a>
+                    `
                 }
             },
             {

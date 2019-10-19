@@ -17,25 +17,17 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
         <meta name="description" content="Login">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
-        <!-- Call App Mode on ios devices -->
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <!-- Remove Tap Highlight on Windows Phone IE -->
         <meta name="msapplication-tap-highlight" content="no">
-        <!-- base css -->
+
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/vendors.bundle.css">
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/app.bundle.css">
-        <!-- Place favicon.ico in the root directory -->
         <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>assets/internal/dist/img/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/internal/dist/img/favicon/favicon-32x32.png">
         <link rel="mask-icon" href="<?= base_url() ?>assets/internal/dist/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-        <!-- Optional: page related CSS-->
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/page-login.css">
 
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/notifications/toastr/toastr.css">
-
-
-        <script src="<?= base_url() ?>src/additional.js"></script>
-
         <style>
             .error {
                 color: red;
@@ -61,9 +53,9 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                         <input type="password" name="password" id="password" class="form-control" placeholder="Silahkan isi dengan password">
                     </div>
                     <div class="form-group text-left">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="show_pass">
-                            <label class="custom-control-label" for="rememberme"> Lihat Password</label>
+                        <div class="ml-2">
+                            <input type="checkbox" id="show_pass">
+                            <label for="rememberme"> Lihat Password</label>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-default float-right">Login</button>
@@ -80,6 +72,9 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
         <script src="<?= base_url() ?>assets/internal/dist/js/block-ui/jquery.blockUI.js"></script>
         <script src="<?= base_url() ?>assets/internal/dist/js/formplugins/jquery-validation/jquery.validate.min.js"></script>
         <script src="<?= base_url() ?>assets/internal/dist/js/notifications/toastr/toastr.js"></script>
+
+        <script src="<?= base_url() ?>src/additional.js"></script>
+        <script src="<?= base_url() ?>src/auth/verify_int_login.js"></script>
         <script src="<?= base_url() ?>src/auth/int_login.js"></script>
         <!-- Page related scripts -->
     </body>

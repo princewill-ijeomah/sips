@@ -9,10 +9,9 @@
         </div>
         <div class="d-flex flex-fill">
             <div class="flex-fill">
-                <span class="h5">About</span>
-                <p>Points.</p>
+                <span class="h5">Selamat Datang</span>
                 <p class="m-0">
-                    Find in-depth, guidelines, tutorials and more on Addon's <a href="javascript:void(0)" target="_blank">Official Documentation</a>
+                    Anda login sebagai <b>Cashier</b>
                 </p>
             </div>
         </div>

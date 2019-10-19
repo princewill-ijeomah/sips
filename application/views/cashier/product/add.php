@@ -10,7 +10,7 @@
     </h1>
 </div>
 
-<form id="form_add">
+<form id="form_add" enctype="multipart/form-data">
     <div class="row" id="form_container">
         <div class="col-md-12">
             <div id="panel-1" class="panel">

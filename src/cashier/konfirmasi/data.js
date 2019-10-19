@@ -102,7 +102,9 @@ $(function () {
                 }
             },
             {
-                data: "jml_transfer"
+                data: null, render: (data, type, row) => {
+                    return `Rp. ${parseInt(row.jml_transfer).toLocaleString(['ban', 'id'])}`
+                }
             },
             {
                 data: null, render: (data, type, row) => {

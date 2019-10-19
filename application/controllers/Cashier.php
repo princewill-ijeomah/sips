@@ -43,7 +43,12 @@ class Cashier extends CI_Controller {
 	{
 		$this->load->view('cashier/transaksi/data');
 	}
-	
+
+	public function detail_transaksi($id)
+	{
+		$this->load->view('cashier/transaksi/detail');
+	}
+
     public function konfirmasi()
 	{
 		$this->load->view('cashier/konfirmasi/data');

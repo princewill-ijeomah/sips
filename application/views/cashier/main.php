@@ -19,8 +19,8 @@
 
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/notifications/toastr/toastr.css">
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/datagrid/datatables/datatables.bundle.css">
-
-        <script src="<?= base_url() ?>src/additional.js"></script>
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/page-invoice.css">
+        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/statistics/chartjs/chartjs.css">
 
         <style>
             .error {
@@ -90,7 +90,7 @@
         </script>
         <div class="page-wrapper">
             <div class="page-inner">
-                <!-- BEGIN Left Aside -->
+            
                 <aside class="page-sidebar">
                     <div class="page-logo">
                         <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center position-relative">
@@ -99,17 +99,17 @@
                             <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
                         </a>
                     </div>
-                    <!-- BEGIN PRIMARY NAVIGATION -->
+                    
                     <nav id="js-primary-nav" class="primary-nav" role="navigation">
                         <div class="info-card">
                             <img src="<?= base_url() ?>assets/internal/dist/img/demo/avatars/avatar-m.png" class="profile-image rounded-circle" alt="Dr. Codex Lantern">
                             <div class="info-card-text">
                                 <a href="javascript:void(0)" class="d-flex align-items-center text-white">
-                                    <span class="text-truncate text-truncate-sm d-inline-block">
-                                        Dr. Codex Lantern
+                                    <span class="text-truncate text-truncate-sm d-inline-block header_name">
+                                        ...
                                     </span>
                                 </a>
-                                <span class="d-inline-block text-truncate text-truncate-sm">Toronto, Canada</span>
+                                <span class="d-inline-block text-truncate text-truncate-sm header_level">...</span>
                             </div>
                             <img src="<?= base_url() ?>assets/internal/dist/img/card-backgrounds/cover-2-lg.png" class="cover" alt="cover">
                         </div>
@@ -154,11 +154,10 @@
                         <div class="filter-message js-filter-message bg-success-600"></div>
                     </nav>
                 </aside>
-                <!-- END Left Aside -->
+                
                 <div class="page-content-wrapper">
-                    <!-- BEGIN Page Header -->
                     <header class="page-header" role="banner">
-                        <!-- we need this logo when user switches to nav-function-top -->
+                    
                         <div class="page-logo">
                             <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
                                 <img src="<?= base_url() ?>assets/internal/dist/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
@@ -167,7 +166,7 @@
                                 <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
                             </a>
                         </div>
-                        <!-- DOC: nav menu layout change shortcut -->
+                        
                         <div class="hidden-md-down dropdown-icon-menu position-relative">
                             <a href="javascript:void(0)" class="header-btn btn js-waves-off" data-action="toggle" data-class="nav-function-hidden" title="Hide Navigation">
                                 <i class="ni ni-menu"></i>
@@ -185,19 +184,16 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- DOC: mobile button appears during mobile width -->
                         <div class="hidden-lg-up">
                             <a href="javascript:void(0)" class="header-btn btn press-scale-down" data-action="toggle" data-class="mobile-nav-on">
                                 <i class="ni ni-menu"></i>
                             </a>
                         </div>
+
                         <div class="ml-auto d-flex">
                             <div>
                                 <a href="javascript:void(0)" data-toggle="dropdown" title="drlantern@gotbootstrap.com" class="header-icon d-flex align-items-center justify-content-center ml-2">
                                     <img src="<?= base_url() ?>assets/internal/dist/img/demo/avatars/avatar-m.png" class="profile-image rounded-circle" alt="Dr. Codex Lantern">
-                                    <!-- you can also add username next to the avatar with the codes below:
-									<span class="ml-1 mr-1 text-truncate text-truncate-header hidden-xs-down">Me</span>
-									<i class="ni ni-chevron-down hidden-xs-down"></i> -->
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-animated dropdown-lg">
                                     <div class="dropdown-header bg-trans-gradient d-flex flex-row py-4 rounded-top">
@@ -206,14 +202,18 @@
                                                 <img src="<?= base_url() ?>assets/internal/dist/img/demo/avatars/avatar-m.png" class="rounded-circle profile-image" alt="Dr. Codex Lantern">
                                             </span>
                                             <div class="info-card-text">
-                                                <div class="fs-lg text-truncate text-truncate-lg">Dr. Codex Lantern</div>
-                                                <span class="text-truncate text-truncate-md opacity-80">drlantern@gotbootstrap.com</span>
+                                                <div class="fs-lg text-truncate text-truncate-lg header_name">...</div>
+                                                <span class="text-truncate text-truncate-md opacity-80 header_email">...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="dropdown-divider m-0"></div>
-                                    <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target=".js-modal-settings">
-                                        <span data-i18n="drpdwn.settings">Settings</span>
+                                    <a href="javascript:void(0)" class="dropdown-item access_profile" data-toggle="modal" data-target=".js-modal-settings">
+                                        <span data-i18n="drpdwn.settings">Edit Profile</span>
+                                    </a>
+                                    <div class="dropdown-divider m-0"></div>
+                                    <a href="javascript:void(0)" class="dropdown-item access_password" data-toggle="modal" data-target=".js-modal-settings">
+                                        <span data-i18n="drpdwn.settings">Ganti Password</span>
                                     </a>
                                     <div class="dropdown-divider m-0"></div>
                                     <a href="javascript:void(0)" class="dropdown-item" data-action="app-fullscreen">
@@ -221,22 +221,19 @@
                                         <i class="float-right text-muted fw-n">F11</i>
                                     </a>
                                     <div class="dropdown-divider m-0"></div>
-                                    <a class="dropdown-item fw-500 pt-3 pb-3" href="page_login-alt.html">
+                                    <a class="dropdown-item fw-500 pt-3 pb-3 access_logout" href="javascript:void(0)">
                                         <span data-i18n="drpdwn.page-logout">Logout</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </header>
-                    <!-- END Page Header -->
-                    <!-- BEGIN Page Content -->
-                    <!-- the #js-page-content id is needed for some plugins to initialize -->
+
                     <main id="js-page-content" role="main" class="page-content">
                         
                     </main>
-                    <!-- this overlay is activated only when mobile menu is triggered -->
-                    <div class="page-content-overlay" data-action="toggle" data-class="mobile-nav-on"></div> <!-- END Page Content -->
-                    <!-- BEGIN Page Footer -->
+
+                    <div class="page-content-overlay" data-action="toggle" data-class="mobile-nav-on"></div>
                     <footer class="page-footer" role="contentinfo">
                         <div class="d-flex align-items-center flex-1 text-muted">
                             <span class="hidden-md-down fw-700">Made with <i class="fal fa-heart" style="color: pink"></i> by&nbsp;<a href='#' class='text-primary fw-500' title='gotbootstrap.com' target='_blank'>Vicky Kurnia - 30815166</a></span>
@@ -245,9 +242,96 @@
                 </div>
             </div>
         </div>
-        <!-- END Page Wrapper -->
-        <!-- BEGIN Quick Menu -->
-        <!-- to add more items, please make sure to change the variable '$menu-items: number;' in your _page-components-shortcut.scss -->
+
+        <form id="form_profile">
+            <div class="modal fade" id="modal_profile" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                Edit Profile
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="profile_nama_lengkap" name="nama_lengkap">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Jenis Kelamin</label>
+                                <select name="jenis_kelamin" id="profile_jenis_kelamin" class="form-control">
+                                    <option value="L">Laki-laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tanggal Lahir</label>
+                                <input type="date" class="form-control" id="profile_tgl_lahir" name="tgl_lahir">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Alamat</label>
+                                <textarea class="form-control" id="profile_alamat" name="alamat" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Telepon</label>
+                                <input type="number" class="form-control" id="profile_telepon" name="telepon">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form id="form_password">
+            <div class="modal fade" id="modal_password" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                Ganti Password
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="">Passoword Lama</label>
+                                <input type="password" class="form-control" id="old_password" name="old_password">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Password Baru</label>
+                                <input type="password" class="form-control" id="new_password" name="new_password">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Ulangi Password</label>
+                                <input type="password" class="form-control" id="retype_password" name="retype_password">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <input type="checkbox" id="show_pass">
+                                        <label for="show_pass">Show Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
         <nav class="shortcut-menu d-none d-sm-block">
             <input type="checkbox" class="menu-open" name="menu-open" id="menu_open" />
             <label for="menu_open" class="menu-open-button ">
@@ -256,7 +340,7 @@
             <a href="javascript:void(0)" class="menu-item btn" data-toggle="tooltip" data-placement="left" title="Scroll Top">
                 <i class="fal fa-arrow-up"></i>
             </a>
-            <a href="page_login-alt.html" class="menu-item btn" data-toggle="tooltip" data-placement="left" title="Logout">
+            <a href="javascript:void(0)" class="menu-item btn access_logout" data-toggle="tooltip" data-placement="left" title="Logout">
                 <i class="fal fa-sign-out"></i>
             </a>
             <a href="javascript:void(0)" class="menu-item btn" data-action="app-fullscreen" data-toggle="tooltip" data-placement="left" title="Full Screen">
@@ -271,7 +355,10 @@
         <script src="<?= base_url() ?>assets/internal/dist/js/formplugins/jquery-validation/jquery.validate.min.js"></script>
         <script src="<?= base_url() ?>assets/internal/dist/js/notifications/toastr/toastr.js"></script>
         <script src="<?= base_url() ?>assets/internal/dist/js/datagrid/datatables/datatables.bundle.js"></script>
+        <script src="<?= base_url() ?>assets/internal/dist/js/statistics/chartjs/chartjs.bundle.js"></script>
         
+        <script src="<?= base_url() ?>src/additional.js"></script>
+        <script src="<?= base_url() ?>src/cashier/verify_user.js"></script>
         <script src="<?= base_url() ?>src/cashier/main.js"></script>
     </body>
 </html>

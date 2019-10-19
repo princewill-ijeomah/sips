@@ -1,37 +1,57 @@
 console.log('Add Product is running...')
 
-$(function(){
+$(function () {
     const DOM = {
         kategori: {
             container: '#category_content'
         },
         panel: {
-            add: '#panel-add'
+            kriteria: '#panel_kriteria',
+            add: '#panel_add'
         },
         form: {
             container: '#form_container',
-            add: '#form_add'
+            edit: '#form_edit'
+        },
+        input: {
+            id_product: '#id_product',
+            nama_product: '#nama_product',
+            weight: '#weight',
+            harga: '#harga',
+            deskripsi: '#deskripsi'
         }
     }
 
-    const addProductUI = (() => {
-        const { kategori, form} = DOM
+    const editProductUI = (() => {
+        const { kategori, form, input } = DOM
 
         return {
-            renderContainer: (data) => {
+            setValue: (data, kriteria) => {
                 let html = '';
                 let no = 0;
 
-                data.map(kriteria => {
+                $(input.id_product).val(data.id_product);
+                $(input.nama_product).val(data.nama_product);
+                $(input.weight).val(data.weight);
+                $(input.harga).val(data.harga);
+                $(input.deskripsi).val(data.deskripsi);
+
+                const subkriteria = data.kriteria.filter(v => v.subkriteria !== null).map(k => {
+                    return k.subkriteria.id_subkriteria
+                })
+
+                console.log(subkriteria)
+
+                kriteria.map(v => {
                     html += `
                         <div class="form-group">
-                            <label>${kriteria.nama_kriteria}</label>
-                            <select class="form-control" name="id_subkriteria[${no++}]" required>
+                            <label>${v.nama_kriteria}</label>
+                            <select class="form-control" name="id_subkriteria[${no++}]" id="id_kriteria[${v.id_kriteria}]" required>
                                 <option value="">-</option>
                     `
 
-                    kriteria.subkriteria.map(subkriteria => {
-                        html += `<option value="${subkriteria.id_subkriteria}">${subkriteria.nama_subkriteria}</option>`
+                    v.subkriteria.map(sub => {
+                        html += `<option value="${sub.id_subkriteria}" ${subkriteria.includes(sub.id_subkriteria) ? 'selected' : ''}>${sub.nama_subkriteria}</option>`
                     })
 
                     html += `
@@ -41,17 +61,56 @@ $(function(){
                 })
 
                 $(kategori.container).html(html)
+                
             }
         }
     })()
 
-    const addProductController = ((UI) => {
+    const editProductController = ((UI) => {
         const { panel, form } = DOM
+        const id_product = location.hash.substr(15)
 
         const fetchKriteria = () => {
             $.ajax({
                 url: `${BASE_URL}int/kriteria`,
                 type: 'GET',
+                dataType: 'JSON',
+                beforeSend: xhr => {
+                    xhr.setRequestHeader("INT-SIPS-KEY", INT_TOKEN)
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa(USERNAME + ":" + PASSWORD))
+
+                    $(panel.kriteria).block({
+                        message: '<i class="fal fa-spinner fa-spin fa-5x"></i>',
+                        overlayCSS: {
+                            backgroundColor: '#fff',
+                            opacity: 0.8,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            padding: 0,
+                            backgroundColor: 'transparent'
+                        }
+                    })
+                },
+                success: ({ data }) => {
+                    fetchProduct(id_product, data)
+                },
+                error: err => {
+                    const { error } = err.responseJSON
+                    toastr.error(error, 'Gagal')
+                },
+                complete: () => {
+                    $(panel.kriteria).unblock()
+                }
+            })
+        }
+
+        const fetchProduct = (id, kriteria) => {
+            $.ajax({
+                url: `${BASE_URL}int/product`,
+                type: 'GET',
+                data: {id_product: id},
                 dataType: 'JSON',
                 beforeSend: xhr => {
                     xhr.setRequestHeader("INT-SIPS-KEY", INT_TOKEN)
@@ -72,7 +131,11 @@ $(function(){
                     })
                 },
                 success: ({ data }) => {
-                    UI.renderContainer(data)
+                    if(data.length === 1){
+                        data.map(v => {
+                            UI.setValue(v, kriteria)
+                        })
+                    }
                 },
                 error: err => {
                     const { error } = err.responseJSON
@@ -84,25 +147,23 @@ $(function(){
             })
         }
 
-        const submitAdd = () => {
-            $(form.add).validate({
+        const submitEdit = () => {
+            $(form.edit).validate({
                 rules: {
                     'nama_product': 'required',
                     'weight': 'required',
                     'harga': 'required',
                     'deskripsi': 'required',
-                    'foto': 'required',
                 },
                 messages: {
                     'nama_product': 'Field wajib diisi',
                     'weight': 'Field wajib diisi',
                     'harga': 'Field wajib diisi',
                     'deskripsi': 'Field wajib diisi',
-                    'foto': 'Field wajib diisi',
                 },
                 submitHandler: form => {
                     $.ajax({
-                        url: `${BASE_URL}int/product/add`,
+                        url: `${BASE_URL}int/product/edit`,
                         type: 'POST',
                         dataType: 'JSON',
                         data: new FormData(form),
@@ -144,10 +205,10 @@ $(function(){
         return {
             init: () => {
                 fetchKriteria()
-                submitAdd()
+                submitEdit()
             }
         }
-    })(addProductUI)
+    })(editProductUI)
 
-    addProductController.init();
+    editProductController.init();
 })

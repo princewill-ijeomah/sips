@@ -21,6 +21,7 @@ class Product extends CI_Controller {
 
         $this->load->model('ProductModel');
         $this->load->model('KriteriaModel');
+        $this->load->model('TransaksiDetailModel');
         $this->load->model('ProductSubkriteriaModel');
     }
 
@@ -45,7 +46,7 @@ class Product extends CI_Controller {
                 $json_p['weight'] = $key->weight;
                 $json_p['harga'] = $key->harga;
                 $json_p['deskripsi'] = $key->deskripsi;
-                $json_p['foto'] = base_url('document/product/').$key->foto;
+                $json_p['foto'] = base_url('doc/foto/').$key->foto;
                 $json_p['kriteria'] = array();
 
                 $kriteria = $this->KriteriaModel->fetch(array())->result();
@@ -82,6 +83,37 @@ class Product extends CI_Controller {
         }
     }
 
+    public function statistic_get()
+    {
+        if(!$this->auth){
+            $this->response(['status' => false, 'error' => 'Invalid Token'], 400);
+        } else {
+            $where = array(
+                'id_product'   => $this->get('id_product') 
+            );
+
+            $product = $this->TransaksiDetailModel->statistic($where)->result();
+            $data = array();
+
+            foreach($product as $key){
+                $json_p = array();
+
+                $json_p['id_product'] = $key->id_product;
+                $json_p['nama_product'] = $key->nama_product;
+                $json_p['weight'] = $key->weight;
+                $json_p['harga'] = $key->harga;
+                $json_p['deskripsi'] = $key->deskripsi;
+                $json_p['total_qty'] = $key->total_qty;
+                $json_p['total_terjual'] = $key->total_terjual;
+                $json_p['foto'] = base_url('doc/foto/').$key->foto;
+
+                $data[] = $json_p;
+            }
+
+            $this->response(['status' => true, 'message' => 'Berhasil menampilkan statistic product', 'data' => $data], 200);
+        }
+    }
+
     public function add_post()
     {
         if(!$this->auth){
@@ -103,12 +135,17 @@ class Product extends CI_Controller {
                 array(
                     'field' => 'harga',
                     'label' => 'Harga',
-                    'rules' => 'required|trim|is_unique[user.email]|valid_email'
+                    'rules' => 'required|trim'
                 ),
                 array(
                     'field' => 'deskripsi',
                     'label' => 'Deskripsi',
-                    'rules' => 'required|trim|is_unique[user.username]'
+                    'rules' => 'required|trim'
+                ),
+                array(
+                    'field' => 'id_subkriteria[]',
+                    'label' => 'Subkriteria',
+                    'rules' => 'required|trim'
                 )
             );
 
@@ -118,6 +155,7 @@ class Product extends CI_Controller {
             if(!$this->form_validation->run()){
                 $this->response(['status' => false, 'error' => $this->form_validation->error_array()], 400);
             } else {
+                $post = $this->post();
                 $id_product = $this->KodeModel->buat_kode('product', 'PR-', 'id_product', 8);
 
                 $data = array(
@@ -129,13 +167,106 @@ class Product extends CI_Controller {
                     'foto' => $this->upload_foto('foto', $id_product)
                 );
 
-                $add = $this->ProductModel->add($data);
+                $detail  = array();
+                foreach($post['id_subkriteria'] as $key => $val){
+                    $detail[] = array(
+                        'id_product' => $id_product,
+                        'id_subkriteria' => $post['id_subkriteria'][$key]
+                    );
+                }
+
+                $add = $this->ProductModel->add($data, $detail);
 
                 if(!$add){
                     $error = $this->db->error();
-                    $this->response(['status' => false, 'error' => 'Gagal menghapus product', 'error_code' => $error['code']], 500);
+                    $this->response(['status' => false, 'error' => 'Gagal menambahkan product', 'error_code' => $error['code']], 500);
                 } else {
                     $this->response(['status' => true, 'message'   => 'Berhasil menambahkan product'], 200);
+                }     
+            }
+        } 
+    }
+
+    public function edit_post()
+    {
+        if(!$this->auth){
+            $this->response(['status' => false, 'error' => 'Invalid Token'], 400);
+        } else {
+            $otorisasi  = $this->auth;
+
+            $config = array(
+                array(
+                    'field' => 'id_product',
+                    'label' => 'Nama Product',
+                    'rules' => 'required|trim|callback_cek_product'
+                ),
+                array(
+                    'field' => 'nama_product',
+                    'label' => 'Nama Product',
+                    'rules' => 'required|trim'
+                ),
+                array(
+                    'field' => 'weight',
+                    'label' => 'Weight',
+                    'rules' => 'required|trim'
+                ),
+                array(
+                    'field' => 'harga',
+                    'label' => 'Harga',
+                    'rules' => 'required|trim'
+                ),
+                array(
+                    'field' => 'deskripsi',
+                    'label' => 'Deskripsi',
+                    'rules' => 'required|trim'
+                ),
+                array(
+                    'field' => 'id_subkriteria[]',
+                    'label' => 'Subkriteria',
+                    'rules' => 'required|trim'
+                )
+            );
+
+            $this->form_validation->set_data($this->post());
+            $this->form_validation->set_rules($config);
+
+            if(!$this->form_validation->run()){
+                $this->response(['status' => false, 'error' => $this->form_validation->error_array()], 400);
+            } else {
+                $post = $this->post();
+
+                $where = array(
+                    'id_product' => $this->post('id_product')
+                );
+
+                $data = array(
+                    'nama_product' => $this->post('nama_product'),
+                    'weight' => $this->post('weight'),
+                    'harga' => $this->post('harga'),
+                    'deskripsi' => $this->post('deskripsi'),
+                );
+
+                $foto = $this->upload_foto('foto', $this->post('id_product'));
+
+                if($foto != null){
+                    $data['foto'] = $foto;
+                }
+
+                $detail  = array();
+                foreach($post['id_subkriteria'] as $key => $val){
+                    $detail[] = array(
+                        'id_product' => $this->post('id_product'),
+                        'id_subkriteria' => $post['id_subkriteria'][$key]
+                    );
+                }
+
+                $edit = $this->ProductModel->edit($where, $data, $detail);
+
+                if(!$edit){
+                    $error = $this->db->error();
+                    $this->response(['status' => false, 'error' => 'Gagal mengedit product', 'error_code' => $error['code']], 500);
+                } else {
+                    $this->response(['status' => true, 'message'   => 'Berhasil mengedit product'], 200);
                 }     
             }
         } 
@@ -184,10 +315,10 @@ class Product extends CI_Controller {
     }
 
     public function upload_foto($name, $id){
-        $files = glob('document/'.$name.'/'.$id.'.*');
-        foreach ($files as $key) {
-            unlink($key);
-        }
+        // $files = glob('document/'.$name.'/'.$id.'.*');
+        // foreach ($files as $key) {
+        //     unlink($key);
+        // }
 
         $config['upload_path']   = './doc/'.$name.'/';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc|docx';

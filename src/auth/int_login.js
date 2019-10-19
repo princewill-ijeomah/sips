@@ -3,7 +3,12 @@ console.log('Login is running...');
 $(function() {
     const DOM = {
         form: '#form_login',
-        container: '#container_login'
+        container: '#container_login',
+        input: {
+            password: '#password',
+            show_pass: '#show_pass'
+        },
+        loader: '.loader'
     }
 
     toastr.options = {
@@ -24,18 +29,11 @@ $(function() {
         "hideMethod": "slideUp"
     }
 
-    const loginUI = (() => {
-
-    })()
-
-    const loginController = ((UI) => {
-
-        const showPassword = () => {
-
-        }
+    const loginController = (() => {
+        const {form, input, container, loader} = DOM
 
         const submitLogin = () => {
-            $(DOM.form).validate({
+            $(form).validate({
                 rules: {
                     username: 'required',
                     password: 'required'
@@ -52,7 +50,7 @@ $(function() {
                         data: $(form).serialize(),
                         beforeSend: xhr => {
                             xhr.setRequestHeader("Authorization", "Basic " + btoa(USERNAME + ":" + PASSWORD))
-                            $(DOM.container).block({
+                            $(container).block({
                                 message: '<i class="fal fa-spinner fa-spin fa-5x"></i>',
                                 overlayCSS: {
                                     backgroundColor: '#fff',
@@ -75,19 +73,32 @@ $(function() {
                             toastr.error(error, 'Gagal')
                         },
                         complete: () => {
-                            $(DOM.container).unblock();
+                            $(container).unblock();
                         }
                     })
                 }
             });
         }
 
+        const additionalListener = () => {
+            $(loader).fadeOut()
+
+            $(input.show_pass).click(function () {
+                if ($(this).is(':checked')) {
+                    $(input.password).attr('type', 'text');
+                } else {
+                    $(input.password).attr('type', 'password');
+                };
+            });
+        }
+
         return {
             init : () => {
-                submitLogin();        
+                submitLogin(); 
+                additionalListener()       
             }
         }
-    })(loginUI)
+    })()
 
     loginController.init();
 })

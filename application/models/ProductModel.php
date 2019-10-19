@@ -20,14 +20,44 @@ class ProductModel extends CI_Model {
       return $this->db->get();
     }
 
-    function add($data)
+    function add($data, $detail)
     {
-      return $this->db->insert('product', $data);
+      $this->db->trans_start();
+      $this->db->insert('product', $data);
+
+      if(!empty($detail)){
+          $this->db->insert_batch('product_subkriteria', $detail);
+      }
+      $this->db->trans_complete();
+
+      if ($this->db->trans_status() === FALSE){
+        $this->db->trans_rollback();
+        return false;
+      } else {
+        $this->db->trans_commit();
+        return true;
+      }
     }
 
-    function edit($where, $data)
+    function edit($where, $data, $detail)
     {
-      return $this->db->where($where)->update('product', $data);
+      $this->db->trans_start();
+      $this->db->where($where)->update('product', $data);
+
+      if(!empty($detail)){
+          $this->db->where($where)->delete('product_subkriteria');
+          $this->db->insert_batch('product_subkriteria', $detail);
+      }
+
+      $this->db->trans_complete();
+
+      if ($this->db->trans_status() === FALSE){
+        $this->db->trans_rollback();
+        return false;
+      } else {
+        $this->db->trans_commit();
+        return true;
+      }
     }
 
     function delete($where){

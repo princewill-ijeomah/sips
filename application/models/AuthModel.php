@@ -9,24 +9,11 @@ class AuthModel extends CI_Model {
       return $this->db->select('*')->from('user')->where($where)->limit(1)->get();
     }
 
-    function updateAuth($where, $data, $log)
+    function updateAuth($where, $data)
     {
-      $this->db->trans_start();
-      $this->db->where($where)->update('user', $data);
-      $this->db->insert('user_log', $log);
-      $this->db->trans_complete();
-
-      if ($this->db->trans_status() === FALSE){
-        $this->db->trans_rollback();
-        return false;
-      } else {
-        $this->db->trans_commit();
-        return true;
-      }
+      return $this->db->where($where)->update('user', $data);
     }
-
-
-
+    
 }
 
 ?>
