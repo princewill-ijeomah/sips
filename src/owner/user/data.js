@@ -168,7 +168,7 @@ $(function(){
         }
 
         const editUser = () => {
-            $(table).on('click', button.edit, () => {
+            $(table).on('click', button.edit, function ()  {
                 let id_user = $(this).data('id')
 
                 fetchUser(id_user, data => {

@@ -384,7 +384,7 @@ aside.page-sidebar ($nav-width, $nav-background)
 ========================================================================== */
 /* ACCESSIBILITIES */
 .toast {
-  background-color: #886ab5;
+  background-color: #81b56a;
   background-image: none !important; }
   .toast:before {
     content: "\f05a";

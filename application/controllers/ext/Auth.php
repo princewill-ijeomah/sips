@@ -18,6 +18,7 @@ class Auth extends CI_Controller {
         $this->__resTraitConstruct();
 
         $this->load->model('AuthModel');
+        $this->load->model('UserModel');
     }
 
     public function login_post()
@@ -77,6 +78,66 @@ class Auth extends CI_Controller {
                 }
             }
         }  
+    }
+
+    public function register_post()
+    {
+        $config = array(
+            array(
+                'field' => 'nama_lengkap',
+                'label' => 'Nama Lengkap',
+                'rules' => 'required|trim'
+            ),
+            array(
+                'field' => 'telepon',
+                'label' => 'Telepon',
+                'rules' => 'required|trim'
+            ),
+            array(
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'required|trim|is_unique[user.email]|valid_email'
+            ),
+            array(
+                'field' => 'username',
+                'label' => 'Username',
+                'rules' => 'required|trim|is_unique[user.username]'
+            ),
+            array(
+                'field' => 'password',
+                'label' => 'Passwword',
+                'rules' => 'required|trim'
+            ),
+        );
+
+        $this->form_validation->set_data($this->post());
+        $this->form_validation->set_rules($config);
+
+        if(!$this->form_validation->run()){
+            $this->response(['status' => false, 'error' => $this->form_validation->error_array()], 400);
+        } else {
+            $data = array(
+                'id_user' => $this->KodeModel->buat_kode('user', 'USR-', 'id_user', 7),
+                'nama_lengkap' => $this->post('nama_lengkap'),
+                'jenis_kelamin' => $this->post('jenis_kelamin'),
+                'tgl_lahir' => $this->post('tgl_lahir'),
+                'alamat' => $this->post('alamat'),
+                'telepon' => $this->post('telepon'),
+                'email' => $this->post('email'),
+                'username' => $this->post('username'),
+                'password' => sha1($this->post('password')),
+                'aktif' => 'Y',
+                'level' => 'Customer'
+            );
+
+            $add = $this->UserModel->add($data);
+
+            if(!$add){
+                $this->response(['status' => false, 'message' => 'Gagal registrasi user'], 500);
+            } else {
+                $this->response(['status' => true, 'message' => 'Berhasil registrasi user'], 200);
+            }
+        }
     }
 
     

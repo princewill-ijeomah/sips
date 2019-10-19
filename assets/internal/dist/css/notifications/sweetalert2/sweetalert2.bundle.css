@@ -1088,7 +1088,7 @@ body.swal2-no-backdrop .swal2-shown {
     border: 0;
     border-radius: 0.25em;
     background: initial;
-    background-color: #886ab5;
+    background-color: #81b56a;
     color: #fff;
     font-size: 0.875em; }
   .swal2-styled.swal2-cancel {
@@ -1168,8 +1168,10 @@ body.swal2-no-backdrop .swal2-shown {
   font-size: 0.875em;
   font-weight: 300;
   line-height: normal;
-  text-align: center;
   word-wrap: break-word; }
+
+#swal2-content {
+  text-align: center; }
 
 .swal2-input,
 .swal2-file,
@@ -1205,7 +1207,7 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-input:focus,
   .swal2-file:focus,
   .swal2-textarea:focus {
-    border: 1px solid #886ab5;
+    border: 1px solid #81b56a;
     outline: none;
     -webkit-box-shadow: transparent;
             box-shadow: transparent; }
@@ -1345,7 +1347,6 @@ body.swal2-no-backdrop .swal2-shown {
   zoom: normal;
   border: .25em solid transparent;
   border-radius: 50%;
-  font-family: inherit;
   line-height: 5em;
   cursor: default;
   -webkit-user-select: none;
@@ -1395,8 +1396,8 @@ body.swal2-no-backdrop .swal2-shown {
     .swal2-icon.swal2-info::before {
       content: 'i'; }
   .swal2-icon.swal2-question {
-    border-color: #beaed7;
-    color: #886ab5; }
+    border-color: #bbd7ae;
+    color: #81b56a; }
     .swal2-icon.swal2-question::before {
       content: '?'; }
     .swal2-icon.swal2-question.swal2-arabic-question-mark::before {
@@ -1482,23 +1483,23 @@ body.swal2-no-backdrop .swal2-shown {
     width: 2em;
     height: 2em;
     border-radius: 2em;
-    background: #886ab5;
+    background: #81b56a;
     color: #fff;
     line-height: 2em;
     text-align: center; }
     .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step {
-      background: #886ab5; }
+      background: #81b56a; }
       .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step ~ .swal2-progress-step {
-        background: #beaed7;
+        background: #bbd7ae;
         color: #fff; }
       .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step ~ .swal2-progress-step-line {
-        background: #beaed7; }
+        background: #bbd7ae; }
   .swal2-progress-steps .swal2-progress-step-line {
     z-index: 10;
     width: 2.5em;
     height: .4em;
     margin: 0 -1px;
-    background: #886ab5; }
+    background: #81b56a; }
 
 [class^='swal2'] {
   -webkit-tap-highlight-color: transparent; }

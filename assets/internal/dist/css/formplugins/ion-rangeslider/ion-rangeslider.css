@@ -987,9 +987,9 @@ h6 small,
 
 /* text-gradient */
 .text-gradient {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(25%, #6e4e9e), color-stop(50%, #62468d), color-stop(75%, #0c7cd5), to(#0960a5));
-  background: linear-gradient(180deg, #6e4e9e 25%, #62468d 50%, #0c7cd5 75%, #0960a5 100%);
-  color: #886ab5;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(25%, #679e4e), color-stop(50%, #5c8d46), color-stop(75%, #0c7cd5), to(#0960a5));
+  background: linear-gradient(180deg, #679e4e 25%, #5c8d46 50%, #0c7cd5 75%, #0960a5 100%);
+  color: #81b56a;
   background-clip: text;
   text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -1068,7 +1068,7 @@ RESULT:
 .irs--flat .irs-to,
 .irs--flat .irs-single,
 .irs--flat .irs-handle > i:first-child {
-  background-color: #886ab5; }
+  background-color: #81b56a; }
 
 .irs--flat .irs-from,
 .irs--flat .irs-to,
@@ -1078,22 +1078,22 @@ RESULT:
 .irs--flat .irs-from:before,
 .irs--flat .irs-to:before,
 .irs--flat .irs-single:before {
-  border-top-color: #886ab5; }
+  border-top-color: #81b56a; }
 
 .irs--flat .irs-handle.state_hover > i:first-child,
 .irs--flat .irs-handle:hover > i:first-child {
-  background-color: #7a59ad; }
+  background-color: #73ad59; }
 
 .irs--big .irs-bar {
-  background-color: #a38cc6;
-  border-color: #886ab5;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(30%, #a38cc6), to(#886ab5));
-  background: linear-gradient(to bottom, #ffffff 0%, #a38cc6 30%, #886ab5 100%); }
+  background-color: #9ec68c;
+  border-color: #81b56a;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(30%, #9ec68c), to(#81b56a));
+  background: linear-gradient(to bottom, #ffffff 0%, #9ec68c 30%, #81b56a 100%); }
 
 .irs--big .irs-from,
 .irs--big .irs-to,
 .irs--big .irs-single {
-  background: #886ab5; }
+  background: #81b56a; }
 
 .irs--modern .irs-bar {
   background: #1ab3a3;

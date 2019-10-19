@@ -9,11 +9,6 @@ class Auth extends CI_Controller {
 		$this->load->view('auth/ext_login');
     }
     
-    public function register()
-	{
-		$this->load->view('auth/register');
-    }
-    
 	public function administrator()
 	{
 		$this->load->view('auth/int_login');
