@@ -19,6 +19,9 @@ class Auth extends CI_Controller {
 
         $this->load->model('AuthModel');
         $this->load->model('UserModel');
+
+        $this->load->library('session');
+        
     }
 
     public function login_post()
@@ -116,8 +119,19 @@ class Auth extends CI_Controller {
         if(!$this->form_validation->run()){
             $this->response(['status' => false, 'error' => $this->form_validation->error_array()], 400);
         } else {
+            
+            $id_user = $this->KodeModel->buat_kode('user', 'USR-', 'id_user', 7);
+
+            $mail_data = array(
+                'id_user' => $id_user,
+                'nama_lengkap' => $this->post('nama_lengkap'),
+                'username' => $this->post('username'),
+                'email' => $this->post('email'),
+                'token' => substr(str_shuffle("01234567890abcdefghijklmnopqestuvwxyz"), 0, 15)
+            );
+
             $data = array(
-                'id_user' => $this->KodeModel->buat_kode('user', 'USR-', 'id_user', 7),
+                'id_user' => $id_user,
                 'nama_lengkap' => $this->post('nama_lengkap'),
                 'jenis_kelamin' => $this->post('jenis_kelamin'),
                 'tgl_lahir' => $this->post('tgl_lahir'),
@@ -145,7 +159,7 @@ class Auth extends CI_Controller {
             $this->email->set_mailtype("html");
             $this->email->set_newline("\r\n");
 
-            $template = $this->load->view('email/konfirmasi', $data, TRUE);
+            $template = $this->load->view('email/konfirmasi', $mail_data, TRUE);
 
             $this->email->to($this->post('email'));
             $this->email->from('adm.titan001@gmail.com','Admin Duta Gym');
@@ -162,10 +176,10 @@ class Auth extends CI_Controller {
                 if(!$add){
                     $this->response(['status' => false, 'message' => 'Gagal registrasi user'], 500);
                 } else {
+                    $this->session->set_userdata($mail_data);
                     $this->response(['status' => true, 'message' => 'Berhasil registrasi user'], 200);
                 }
             }
-            
         }
     }
 

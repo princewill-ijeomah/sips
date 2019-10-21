@@ -368,7 +368,7 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td> <a href="<?= base_url('ext/aktivasi/user/'.$id_user) ?>" target="_blank">Aktivasi</a> </td>
+                                      <td> <a href="<?= base_url('ext/aktivasi/user/'.$token) ?>" target="_blank">Aktivasi</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>
