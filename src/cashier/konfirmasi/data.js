@@ -4,18 +4,25 @@ $(function () {
     const DOM = {
         table: '#t_konfirmasi',
         button: {
-            validasi: '.btn_validasi'
+            validasi: '.btn_validasi',
+            batal: '.btn_batal'
         },
         modal: {
             validasi: '#modal_validasi',
-            content: '.modal-content'
+            content: '.modal-content',
+            batal: '#modal_batal'
         },
         form: {
-            validasi: '#form_validasi'
+            validasi: '#form_validasi',
+            batal: '#form_batal'
         },
         validasi_index: {
             id: '#validasi_no_konfirmasi',
             code: '#code_validasi'
+        },
+        batal_index: {
+            id: '#batal_no_konfirmasi',
+            code: '#code_batal'
         }
     }
 
@@ -96,8 +103,10 @@ $(function () {
                 data: null, render: (data, type, row) => {
                     if (row.valid === 'Y') {
                         return `<span class="badge badge-success">Valid</span> `
-                    } else {
+                    } else if(row.valid === 'T') {
                         return `<span class="badge badge-danger">Tidak Valid</span>`
+                    } else {
+                        return `<span class="badge badge-warning text-white">Dibatalkan</span>`
                     }
                 }
             },
@@ -110,7 +119,7 @@ $(function () {
                 data: null, render: (data, type, row) => {
                     return `
                         <a href="${row.foto}" target="__blank">
-                            <img src="${row.foto}" alt="Gambar Bukti Konfirmasi">
+                            <img src="${row.foto}" class="img-fluid" alt="Gambar Bukti Konfirmasi">
                         </a>
                     `
                 }
@@ -122,6 +131,7 @@ $(function () {
                 data: null, render: (data, type, row) => {
                     if(row.valid === 'T'){
                         return `
+                            <button class="btn btn-danger btn-sm btn_batal" data-id="${row.no_konfirmasi}"><i class="fal fa-times"></i> Batalkan</button>
                             <button class="btn btn-success btn-sm btn_validasi" data-id="${row.no_konfirmasi}"><i class="fal fa-check"></i> Validasi</button>
                         `
                     } else {
@@ -135,7 +145,7 @@ $(function () {
     });
 
     const konfirmasiController = (() => {
-        const { button, modal, form, table, validasi_index } = DOM
+        const { button, modal, form, table, validasi_index, batal_index } = DOM
 
         const fetchKonfirmasi = (id, callback) => {
             $.ajax({
@@ -169,6 +179,23 @@ $(function () {
                         })
 
                         $(modal.validasi).modal('show')
+                    }
+                })
+            })
+        }
+
+        const batalKonfirmasi = () => {
+            $(table).on('click', button.batal, function () {
+                let no_konfirmasi = $(this).data('id')
+
+                fetchKonfirmasi(no_konfirmasi, data => {
+                    if (data.length === 1) {
+                        data.map(v => {
+                            $(batal_index.id).val(v.no_konfirmasi)
+                            $(batal_index.code).text(`${v.no_konfirmasi} - ${v.transaksi.no_transaksi}`)
+                        })
+
+                        $(modal.batal).modal('show')
                     }
                 })
             })
@@ -216,11 +243,55 @@ $(function () {
             })
         }
 
+        const submitBatal = () => {
+            $(form.batal).on('submit', (e) => {
+                e.preventDefault();
+
+                $.ajax({
+                    url: `${BASE_URL}int/konfirmasi/batal`,
+                    type: 'PUT',
+                    dataType: 'JSON',
+                    data: $(form.batal).serialize(),
+                    beforeSend: xhr => {
+                        xhr.setRequestHeader("INT-SIPS-KEY", INT_TOKEN)
+                        xhr.setRequestHeader("Authorization", "Basic " + btoa(USERNAME + ":" + PASSWORD))
+                        $(modal.content).block({
+                            message: '<i class="fal fa-spinner fa-spin fa-5x"></i>',
+                            overlayCSS: {
+                                backgroundColor: '#fff',
+                                opacity: 0.8,
+                                cursor: 'wait'
+                            },
+                            css: {
+                                border: 0,
+                                padding: 0,
+                                backgroundColor: 'transparent'
+                            }
+                        })
+                    },
+                    success: ({ message }) => {
+                        toastr.success(message, 'Berhasil')
+                        $(modal.batal).modal('hide')
+                        tableKonfirmasi.ajax.reload()
+                    },
+                    error: err => {
+                        const { error } = err.responseJSON
+                        toastr.error(error, 'Gagal')
+                    },
+                    complete: () => {
+                        $(modal.content).unblock()
+                    }
+                })
+            })
+        }
+
         return {
             init: () => {
                 validasiKonfirmasi()
+                batalKonfirmasi()
 
                 submitValid()
+                submitBatal()
             }
         }
     })()

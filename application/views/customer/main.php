@@ -14,7 +14,7 @@
 		<meta name="author" content="okler.net">
 
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="<?= base_url() ?>assets/eksternal/img/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="<?= base_url() ?>assets/internal/dist/img/logo-gym3.png" type="image/png" />
 		<link rel="apple-touch-icon" href="<?= base_url() ?>assets/eksternal/img/apple-touch-icon.png">
 
 		<!-- Mobile Metas -->
@@ -42,21 +42,15 @@
 		<link rel="stylesheet" href="<?= base_url() ?>assets/eksternal/vendor/rs-plugin/css/settings.css">
 		<link rel="stylesheet" href="<?= base_url() ?>assets/eksternal/vendor/rs-plugin/css/layers.css">
 		<link rel="stylesheet" href="<?= base_url() ?>assets/eksternal/vendor/rs-plugin/css/navigation.css">
+		<link rel="stylesheet" href="<?= base_url() ?>assets/eksternal/vendor/toastr/build/toastr.min.css">
+
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.css"/>
 		
-		<!-- Demo CSS -->
-
-
-		<!-- Skin CSS -->
 		<link rel="stylesheet" href="<?= base_url() ?>assets/eksternal/css/skins/default.css"> 
-
-		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="<?= base_url() ?>assets/eksternal/css/custom.css">
 
-		<!-- Head Libs -->
 		<script src="<?= base_url() ?>assets/eksternal/vendor/modernizr/modernizr.min.js"></script>
-
-        <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/notifications/toastr/toastr.css">
-
 	</head>
 	<body class="loading-overlay-showing" data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 500}">
 		<div class="loading-overlay">
@@ -83,10 +77,10 @@
 										<nav class="header-nav-top">
 											<ul class="nav nav-pills">
 												<li class="nav-item">
-													<a href="mailto:mail@domain.com"><i class="far fa-envelope text-4 text-color-primary" style="top: 1px;"></i> mail@domain.com</a>
+													<a href="mailto:duta.gym@gmail.com"><i class="far fa-envelope text-4 text-color-primary" style="top: 1px;"></i> duta.gym@gmail.com</a>
 												</li>
 												<li class="nav-item">
-													<a href="tel:123-456-7890"><i class="fab fa-whatsapp text-4 text-color-primary" style="top: 0;"></i> 123-456-7890</a>
+													<a href="tel:021-123123"><i class="fab fa-whatsapp text-4 text-color-primary" style="top: 0;"></i> 021-123123</a>
 												</li>
 											</ul>
 										</nav>
@@ -101,7 +95,7 @@
 								<div class="header-row">
 									<div class="header-logo">
 										<a href="#/home">
-											<img alt="Porto" width="100" height="48" src="<?= base_url() ?>assets/eksternal/img/logo.png">
+											<img alt="Porto" width="150" height="70" src="<?= base_url() ?>assets/eksternal/img/gym_5.png">
 										</a>
 									</div>
 								</div>
@@ -116,7 +110,7 @@
 				</div>
 			</header>
 
-			<div role="main" class="main" id="page_container">
+			<div role="main" class="main shop" id="page_container">
 				<!-- Page Content -->
 			</div>
 
@@ -128,16 +122,16 @@
 					<div class="row py-5 my-4">
 						<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 							<div class="contact-details">
-								<h5 class="text-3 mb-3">CONTACT US</h5>
+								<h5 class="text-3 mb-3">HUBUNGI US</h5>
 								<ul class="list list-icons list-icons-lg">
 									<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i><p class="m-0">234 Street Name, City Name</p></li>
-									<li class="mb-1"><i class="fab fa-whatsapp text-color-primary"></i><p class="m-0"><a href="tel:8001234567">(800) 123-4567</a></p></li>
-									<li class="mb-1"><i class="far fa-envelope text-color-primary"></i><p class="m-0"><a href="mailto:mail@example.com">mail@example.com</a></p></li>
+									<li class="mb-1"><i class="fab fa-whatsapp text-color-primary"></i><p class="m-0"><a href="tel:021-123123">(021) 123123</a></p></li>
+									<li class="mb-1"><i class="far fa-envelope text-color-primary"></i><p class="m-0"><a href="mailto:duta.gym@gmail.com">duta.gym@gmail.com</a></p></li>
 								</ul>
 							</div>
 						</div>
 						<div class="col-md-6 col-lg-2">
-							<h5 class="text-3 mb-3">FOLLOW US</h5>
+							<h5 class="text-3 mb-3">FOLLOW KAMI</h5>
 							<ul class="social-icons">
 								<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
 								<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
@@ -150,8 +144,8 @@
 					<div class="container py-2">
 						<div class="row py-4">
 							<div class="col-lg-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
-								<a href="index.html" class="logo pr-0 pr-lg-3">
-									<img alt="Porto Website Template" src="<?= base_url() ?>assets/eksternal/img/logo-footer.png" class="opacity-5" height="33">
+								<a href="#/home" class="logo pr-0 pr-lg-3">
+									<img alt="Porto Website Template" src="<?= base_url() ?>assets/eksternal/img/gym_5.png" class="opacity-5" height="33">
 								</a>
 							</div>
 							<div class="col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
@@ -163,7 +157,6 @@
 			</footer>
 		</div>
 
-		<!-- Vendor -->
 		<script src="<?= base_url() ?>assets/eksternal/vendor/jquery/jquery.min.js"></script>
 		<script src="<?= base_url() ?>assets/eksternal/vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="<?= base_url() ?>assets/eksternal/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -188,11 +181,15 @@
 		<script src="<?= base_url() ?>assets/eksternal/js/theme.init.js"></script>
 		<script src="<?= base_url() ?>assets/eksternal/js/examples/examples.portfolio.js"></script>
         <script src="<?= base_url() ?>assets/internal/dist/js/block-ui/jquery.blockUI.js"></script>
-        <script src="<?= base_url() ?>assets/internal/dist/js/notifications/toastr/toastr.js"></script>
+        <script src="<?= base_url() ?>assets/eksternal/vendor/toastr/build/toastr.min.js"></script>
+        <script src="<?= base_url() ?>assets/eksternal/vendor/printArea/jquery.PrintArea.js"></script>
+		
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
 
-        <script src="<?= base_url() ?>src/additional.js"></script>
+		<script src="<?= base_url() ?>src/additional.js"></script>
         <script src="<?= base_url() ?>src/customer/app.js"></script>
-
         <script>
             $(function(){
                 mainController.init()

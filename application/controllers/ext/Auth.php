@@ -126,17 +126,46 @@ class Auth extends CI_Controller {
                 'email' => $this->post('email'),
                 'username' => $this->post('username'),
                 'password' => sha1($this->post('password')),
-                'aktif' => 'Y',
+                'aktif' => 'T',
                 'level' => 'Customer'
             );
 
-            $add = $this->UserModel->add($data);
+            $this->load->library('email');
 
-            if(!$add){
-                $this->response(['status' => false, 'message' => 'Gagal registrasi user'], 500);
+            $config = array(
+                'protocol'  => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'adm.titan001@gmail.com',
+                'smtp_pass' => 'cintaku1',
+                'mailtype'  => 'html',
+                'charset'   => 'utf-8'
+            );
+            $this->email->initialize($config);
+            $this->email->set_mailtype("html");
+            $this->email->set_newline("\r\n");
+
+            $template = $this->load->view('email/konfirmasi', $data, TRUE);
+
+            $this->email->to($this->post('email'));
+            $this->email->from('adm.titan001@gmail.com','Admin Duta Gym');
+            $this->email->subject('Aktivasi Akun Duta Gym');
+            $this->email->message($template);
+
+            $send = $this->email->send();
+
+            if (!$send) {
+                json_output(400, array('status' => 400, 'description' => 'Gagal', 'message' => 'Tidak dapat mengirim email'));
             } else {
-                $this->response(['status' => true, 'message' => 'Berhasil registrasi user'], 200);
+                $add = $this->UserModel->add($data);
+
+                if(!$add){
+                    $this->response(['status' => false, 'message' => 'Gagal registrasi user'], 500);
+                } else {
+                    $this->response(['status' => true, 'message' => 'Berhasil registrasi user'], 200);
+                }
             }
+            
         }
     }
 

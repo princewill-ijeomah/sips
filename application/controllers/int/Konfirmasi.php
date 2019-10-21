@@ -53,7 +53,7 @@ class Konfirmasi extends CI_Controller {
                 $json['nama_pengirim'] = $key->nama_pengirim;
                 $json['tgl_transfer'] = $key->tgl_transfer;
                 $json['jml_transfer'] = $key->jml_transfer;
-                $json['foto'] = base_url('document/konfirmasi/').$key->foto;
+                $json['foto'] = base_url('doc/konfirmasi/').$key->foto;
                 $json['tgl_input'] = $key->tgl_input;
                 $json['valid'] = $key->valid;
 
@@ -99,6 +99,46 @@ class Konfirmasi extends CI_Controller {
                     $this->response(['status' => false, 'message' => 'Gagal validasi pembayaran'], 500);
                 } else {
                     $this->response(['status' => true, 'message' => 'Berhasil validasi pembayaran'], 200);
+                }
+            }
+        } 
+    }
+
+    public function batal_put()
+    {
+        if(!$this->auth){
+            $this->response(['status' => false, 'error' => 'Invalid Token'], 400);
+        } else {
+            $otorisasi  = $this->auth;
+
+            $config = array(
+                array(
+                    'field' => 'no_konfirmasi',
+                    'label' => 'No konfirmasi',
+                    'rules' => 'required|trim|callback_cek_konfirmasi'
+                )
+            );
+
+            $this->form_validation->set_data($this->put());
+            $this->form_validation->set_rules($config);
+
+            if(!$this->form_validation->run()){
+                $this->response(['status' => false, 'error' => $this->form_validation->error_array()], 400);
+            } else {
+                $no_konfirmasi  = array(
+                    'no_konfirmasi'   => $this->put('no_konfirmasi') 
+                );
+
+                $no_transaksi = array(
+                    'no_transaksi' => $this->no_transaksi
+                );
+
+                $batal = $this->KonfirmasiModel->batal($no_konfirmasi, $no_transaksi);
+
+                if(!$batal){
+                    $this->response(['status' => false, 'message' => 'Gagal batalkan pembayaran'], 500);
+                } else {
+                    $this->response(['status' => true, 'message' => 'Berhasil batalkan pembayaran'], 200);
                 }
             }
         } 

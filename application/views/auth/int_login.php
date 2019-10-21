@@ -15,7 +15,7 @@
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/vendors.bundle.css">
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/app.bundle.css">
         <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>assets/internal/dist/img/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/internal/dist/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/internal/dist/img/logo-gym3.png">
         <link rel="mask-icon" href="<?= base_url() ?>assets/internal/dist/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
         <link rel="stylesheet" media="screen, print" href="<?= base_url() ?>assets/internal/dist/css/fa-brands.css">
 
@@ -34,8 +34,8 @@
                         <div class="d-flex align-items-center container p-0">
                             <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9">
                                 <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
-                                    <img src="<?= base_url() ?>assets/internal/dist/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
-                                    <span class="page-logo-text mr-1">Duta Gym Administrator</span>
+                                    <img src="<?= base_url() ?>assets/internal/dist/img/logo-gym3.png" class="img-fluid" style="height: 50px" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                                    <span class="page-logo-text mr-1"><img src="<?= base_url() ?>assets/internal/dist/img/logo-gym4.png" style="width: 150px" alt=""</span>
                                 </a>
                             </div>
                         </div>

@@ -52,6 +52,31 @@ class TransaksiModel extends CI_Model {
       $this->db->group_by("MONTH(tgl_transaksi)");
       return $this->db->get();
     }
+
+    function add($data, $detail)
+    {
+      $this->db->trans_start();
+      $this->db->insert('transaksi', $data);
+
+      if(!empty($detail)){
+          $this->db->insert_batch('transaksi_detail', $detail);
+          $this->db->where('id_user', $data['id_user'])->delete('keranjang');
+      }
+      $this->db->trans_complete();
+
+      if ($this->db->trans_status() === FALSE){
+        $this->db->trans_rollback();
+        return false;
+      } else {
+        $this->db->trans_commit();
+        return true;
+      }
+    }
+
+    function edit($where, $data)
+    {
+      return $this->db->where($where)->update('transaksi', $data);
+    }
 }
 
 ?>

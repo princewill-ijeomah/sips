@@ -55,6 +55,8 @@ $route['translate_uri_dashes'] = true;
 
 $route['administrator'] = 'auth/administrator';
 
+$route['customer/transaksi/(:any)'] = 'customer/detail_transaksi/$1';
+
 $route['cashier/product/add'] = 'cashier/add_product';
 $route['cashier/product/edit/(:any)'] = 'cashier/edit_product/$1';
 $route['cashier/transaksi/(:any)'] = 'cashier/detail_transaksi/$1';

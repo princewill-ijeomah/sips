@@ -20,6 +20,17 @@ class ProductModel extends CI_Model {
       return $this->db->get();
     }
 
+    function search($where){
+      $this->db->select('*');
+      $this->db->from('product_subkriteria a');
+      $this->db->where_in('a.id_subkriteria', $where);
+      $this->db->group_by('a.id_product');
+      $this->db->having('COUNT(*)', count($where));
+      $this->db->join('product b', 'b.id_product = a.id_product');
+     
+      return $this->db->get();
+    }
+
     function add($data, $detail)
     {
       $this->db->trans_start();

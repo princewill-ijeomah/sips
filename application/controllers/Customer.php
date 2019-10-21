@@ -29,6 +29,11 @@ class Customer extends CI_Controller {
 		$this->load->view('customer/transaksi');
 	}
 
+	public function detail_transaksi($id)
+	{
+		$this->load->view('customer/detail_transaksi');
+	}
+
 	public function cart()
 	{
 		$this->load->view('customer/cart');

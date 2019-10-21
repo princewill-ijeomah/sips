@@ -70,6 +70,29 @@
     </div>
 </form>
 
+<form id="form_batal">
+    <div id="modal_batal" class="modal modal-alert fade" id="example-modal-alert" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Batalkan Pembayaran</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda yakin membatalkan pembayaran ini <code id="code_batal">...</code> ?
+                    <input type="hidden" name="no_konfirmasi" id="batal_no_konfirmasi">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Ya</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 <script>
     $.getScript(`${BASE_URL}src/cashier/konfirmasi/data.js`)
 </script>

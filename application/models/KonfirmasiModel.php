@@ -28,11 +28,32 @@ class KonfirmasiModel extends CI_Model {
       return $this->db->where($where)->update('konfirmasi', $data);
     }
 
+    function add($data)
+    {
+      return $this->db->insert('konfirmasi', $data);
+    }
+
     function validasi($no_konfirmasi, $no_transaksi)
     {
       $this->db->trans_start();
       $this->db->where($no_konfirmasi)->update('konfirmasi', array('valid' => 'Y'));
       $this->db->where($no_transaksi)->update('transaksi', array('status' => 'Dibayar'));
+      $this->db->trans_complete();
+
+      if ($this->db->trans_status() === FALSE){
+        $this->db->trans_rollback();
+        return false;
+      } else {
+        $this->db->trans_commit();
+        return true;
+      }
+    }
+
+    function batal($no_konfirmasi, $no_transaksi)
+    {
+      $this->db->trans_start();
+      $this->db->where($no_konfirmasi)->update('konfirmasi', array('valid' => 'B'));
+      $this->db->where($no_transaksi)->update('transaksi', array('status' => 'Batal'));
       $this->db->trans_complete();
 
       if ($this->db->trans_status() === FALSE){
