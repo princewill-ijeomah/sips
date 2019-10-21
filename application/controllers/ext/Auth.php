@@ -183,6 +183,75 @@ class Auth extends CI_Controller {
         }
     }
 
+    public function forgot_password_post()
+    {
+        $config = array(
+            array(
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'required|trim|valid_email'
+            ),
+        );
+    
+        $this->form_validation->set_data($this->post());
+        $this->form_validation->set_rules($config);
+
+        if(!$this->form_validation->run()){
+            $this->response(['status' => false, 'error' => $this->form_validation->error_array()], 400);
+        }else{
+
+            $where  = array(
+                'email' => $this->post('email')
+            );
+            
+            $user   = $this->AuthModel->cekAuth($where);
+
+            if($user->num_rows() == 0){
+                $this->response(['status' => false, 'error' => 'Email tidak ditemukan'], 400);
+            } else {
+
+                $auth = $user->row();
+
+                $mail_data = array(
+                    'id_user' => $auth->id_user,
+                    'nama_lengkap' => $auth->nama_lengkap,
+                    'token' => substr(str_shuffle("01234567890abcdefghijklmnopqestuvwxyz"), 0, 15)
+                );
+
+                $this->load->library('email');
+
+                $config = array(
+                    'protocol'  => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'adm.titan001@gmail.com',
+                    'smtp_pass' => 'cintaku1',
+                    'mailtype'  => 'html',
+                    'charset'   => 'utf-8'
+                );
+                $this->email->initialize($config);
+                $this->email->set_mailtype("html");
+                $this->email->set_newline("\r\n");
+
+                $template = $this->load->view('email/forgot_password', $mail_data, TRUE);
+
+                $this->email->to($this->post('email'));
+                $this->email->from('adm.titan001@gmail.com','Admin Duta Gym');
+                $this->email->subject('Lupa Password Akun Duta Gym');
+                $this->email->message($template);
+
+                $send = $this->email->send();
+
+                if (!$send) {
+                    json_output(400, array('status' => 400, 'description' => 'Gagal', 'message' => 'Tidak dapat mengirim email'));
+                } else {
+                    $this->session->set_userdata($mail_data);
+                    $this->response(['status' => true, 'message' => 'Berhasil mengirim password'], 200);
+                }
+            }
+        }  
+    }
+
     
 
 }

@@ -19,7 +19,8 @@ const DOM = {
         },
         form: {
             login: '#form_login',
-            register: '#form_register'
+            register: '#form_register',
+            password: '#form_password'
         },
         input: {
             login: {
@@ -42,8 +43,13 @@ const DOM = {
         },
         button: {
             login: '.btn_login',
-            register: '.btn_register'
+            register: '.btn_register',
+            password: '#btn_password'
         },
+        modal: {
+            password: '#modal_password',
+            content: '.modal-content'
+        }
     },
     setting_page: {
         container: {
@@ -401,7 +407,7 @@ const mainController = ((UI) => {
 })(mainUI)
 
 const authController = (() => {
-    const {form, input, container, button, row} = DOM.auth_page
+    const {form, input, container, button, row, modal} = DOM.auth_page
 
     const verifyUser = () => {
         if (EXT_TOKEN) {
@@ -550,6 +556,52 @@ const authController = (() => {
         })
     }
 
+    const submitPassword = () => {
+        $(form.password).validate({
+            rules: {
+                email: 'required',
+            },
+            messages: {
+                email: 'Silahkan mengisi email',
+            },
+            submitHandler: form => {
+                $.ajax({
+                    url: `${BASE_URL}ext/auth/forgot_password`,
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: $(form).serialize(),
+                    beforeSend: xhr => {
+                        xhr.setRequestHeader("Authorization", "Basic " + btoa(USERNAME + ":" + PASSWORD))
+                        $(modal.content).block({
+                            message: '<i class="fas fa-spinner fa-spin fa-5x"></i>',
+                            overlayCSS: {
+                                backgroundColor: '#fff',
+                                opacity: 0.8,
+                                cursor: 'wait'
+                            },
+                            css: {
+                                border: 0,
+                                padding: 0,
+                                backgroundColor: 'transparent'
+                            }
+                        });
+                    },
+                    success: ({ message }) => {
+                        toastr.success(message, 'Berhasil')
+                        $(modal.password).modal('hide')
+                    },
+                    error: err => {
+                        const { error } = err.responseJSON
+                        toastr.error(error, 'Gagal')
+                    },
+                    complete: () => {
+                        $(modal.content).unblock();
+                    }
+                })
+            }
+        })
+    }
+
     const showPassListener = () => {
         $(input.login.show_pass).click(function () {
             if ($(this).is(':checked')) {
@@ -576,14 +628,26 @@ const authController = (() => {
         })
     }
 
+    const openPassword = () => {
+        $(button.password).on('click', function() {
+            $(form.password)[0].reset();
+            $(modal.password).modal('show')
+        })
+    }
+
     return {
         init: () => {
             verifyUser()
+
             submitLogin()
             submitRegister()
+            submitPassword()
+
             showPassListener()
+            
             openLogin()
             openRegister()
+            openPassword()
         }
     }
 })()

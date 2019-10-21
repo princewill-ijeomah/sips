@@ -67,13 +67,13 @@
 									<ul class="header-extra-info d-flex align-items-center mr-3">
 										<li class="d-none d-sm-inline-flex">
 											<div class="header-extra-info-text">
-												<label>SEND US AN EMAIL</label>
+												<label>EMAIL KAMI</label>
 												<strong><a href="mailto:duta.gym@gmail.com"> duta.gym@gmail.com</a></strong>
 											</div>
 										</li>
 										<li>
 											<div class="header-extra-info-text">
-												<label>CALL US NOW</label>
+												<label>TELEPON KAMI</label>
 												<strong><a href="tel:021-123123">021-123123</a></strong>
 											</div>
 										</li>
@@ -107,7 +107,7 @@
 															</div>
 															<div class="form-row">
 																<div class="form-group col">
-																	<a class="float-right" href="#">(Lupa password?)</a>
+																	<a class="float-right text-info" style="cursor: pointer" id="btn_password">(Lupa password?)</a>
 																	<label class="font-weight-bold text-dark text-2">Password</label>
 																	<input type="password" id="login_password" name="password" class="form-control form-control-lg">
 																</div>
@@ -220,7 +220,32 @@
 
 				</div>
 
+				<form id="form_password">
+					<div class="modal fade" id="modal_password" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title" id="defaultModalLabel">Lupa Password</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-group">
+										<label for="">Email</label>
+										<input type="email" class="form-control" name="email">
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+									<button type="submit" class="btn btn-info" >Kirim</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+
 			</div>
+
+			
 
 			<footer id="footer">
 				<div class="container">

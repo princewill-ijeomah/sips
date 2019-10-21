@@ -56,6 +56,50 @@ class Aktivasi extends CI_Controller {
         $this->load->view('email/messages', $result);
     }
 
+    function ganti_password($token){
+        if($token == null){
+            $result = array(
+                'status' => 'Gagal',
+                'messages' => 'Halaman tidak tersedia'
+            );
+        } else {
+            if($token != $this->session->userdata('token')){
+                $result = array(
+                    'status' => 'Gagal',
+                    'messages' => 'Halaman tidak tersedia'
+                );
+            } else {
+                
+                $session = array('id_user', 'token');
+
+                $result = array(
+                    'status' => 'Berhasail',
+                    'messages' => 'Silahkan mengisi form yang tersedia',
+                    'id_user' => $this->session->userdata('id_user')
+                );
+            }
+        }
+
+        $this->load->view('email/change_password', $result);
+        // $this->session->unset_userdata($session);
+    }
+
+    function update_password() {
+        $where = array(
+            'id_user' => $this->input->post('id_user')
+        );
+
+        $data = array(
+            'password' => sha1($this->input->post('new_password'))
+        );
+
+        $update  = $this->AuthModel->updateAuth($where, $data);
+
+        if($update){
+            redirect('auth');
+        }
+    }
+
     
 
 }
