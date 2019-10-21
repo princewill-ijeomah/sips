@@ -341,7 +341,7 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>Yth <?= $nama_lengkap ?>,</p>
+                        <p>Hi <?= $nama_lengkap ?>,</p>
                         <p>
                           Berikut adalah akun kamu untuk mengakses Duta Gym. Terimakasih sudah bergabung.
                         </p>
@@ -368,7 +368,7 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td> <a href="<?= base_url('') ?>" target="_blank">Konfirmasi</a> </td>
+                                      <td> <a href="<?= base_url('ext/aktivasi/user/'.$id_user) ?>" target="_blank">Aktivasi</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>
