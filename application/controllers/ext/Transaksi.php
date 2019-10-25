@@ -63,10 +63,10 @@ class Transaksi extends CI_Controller {
                     $json_d = array();
 
                     $json_d['product'] = array(
-                        'id_product' => $key2->id_product,
-                        'nama_product' => $key2->nama_product,
+                        'id_product' => $key2->id_produk,
+                        'nama_product' => $key2->nama_produk,
                         'foto' => base_url('doc/foto/').$key2->foto,
-                        'weight' => $key2->weight
+                        'weight' => $key2->berat
                     );
                     $json_d['harga_satuan'] = $key2->harga_satuan;
                     $json_d['qty'] = $key2->qty;
@@ -167,7 +167,7 @@ class Transaksi extends CI_Controller {
                 foreach($post['id_product'] as $key => $val){
                     $detail[] = array(
                         'no_transaksi' => $no_transaksi,
-                        'id_product' => $post['id_product'][$key],
+                        'id_produk' => $post['id_product'][$key],
                         'harga_satuan' => $post['harga_satuan'][$key],
                         'qty' => $post['qty'][$key],
                         'total_harga' => $post['total_harga'][$key]

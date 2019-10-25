@@ -6,7 +6,7 @@ class CartModel extends CI_Model {
 
     function fetch($where)
     {
-      $this->db->select('*')->from('keranjang a')->join('product b', 'b.id_product = a.id_product')->join('user c', 'c.id_user = a.id_user');
+      $this->db->select('*')->from('keranjang a')->join('produk b', 'b.id_produk = a.id_produk')->join('user c', 'c.id_user = a.id_user');
 
       if(!empty($where)){
         foreach($where as $key => $value){

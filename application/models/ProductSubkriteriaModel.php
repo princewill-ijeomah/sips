@@ -7,7 +7,7 @@ class ProductSubkriteriaModel extends CI_Model {
     function fetch($where)
     {
       $this->db->select('*')
-               ->from('product_subkriteria a')
+               ->from('produk_subkriteria a')
                ->join('subkriteria b', 'b.id_subkriteria = a.id_subkriteria', 'left')
                ->join('kriteria c', 'c.id_kriteria = b.id_kriteria', 'left');
 
@@ -19,7 +19,7 @@ class ProductSubkriteriaModel extends CI_Model {
         }
       }
 
-      $this->db->order_by('a.id_product', 'desc');
+      $this->db->order_by('a.id_produk', 'desc');
       return $this->db->get();
     }
 

@@ -8,7 +8,7 @@ class TransaksiDetailModel extends CI_Model {
     {
       $this->db->select('*')
                ->from('transaksi_detail a')
-               ->join('product b', 'b.id_product = a.id_product');
+               ->join('produk b', 'b.id_produk = a.id_produk');
 
       if(!empty($where)){
         foreach($where as $key => $value){
@@ -18,7 +18,7 @@ class TransaksiDetailModel extends CI_Model {
         }
       }
 
-      $this->db->order_by('a.id_product', 'desc');
+      $this->db->order_by('a.id_produk', 'desc');
       return $this->db->get();
     }
 
@@ -27,7 +27,7 @@ class TransaksiDetailModel extends CI_Model {
       $this->db->select('*')
                ->select('SUM(a.qty) as total_qty, SUM(a.total_harga) as total_terjual')
                ->from('transaksi_detail a')
-               ->join('product b', 'b.id_product = a.id_product');
+               ->join('produk b', 'b.id_produk = a.id_produk');
 
       if(!empty($where)){
         foreach($where as $key => $value){
@@ -39,7 +39,7 @@ class TransaksiDetailModel extends CI_Model {
 
       $this->db->order_by('total_qty', 'desc');
       $this->db->limit(5);
-      $this->db->group_by('a.id_product');
+      $this->db->group_by('a.id_produk');
       return $this->db->get();
     }
 }

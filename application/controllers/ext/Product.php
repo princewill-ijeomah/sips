@@ -32,7 +32,7 @@ class Product extends CI_Controller {
         } else {
             
             $where = array(
-                'id_product'   => $this->get('id_product') 
+                'id_produk'   => $this->get('id_product') 
             );
 
             $product = $this->ProductModel->fetch($where)->result();
@@ -41,9 +41,9 @@ class Product extends CI_Controller {
             foreach($product as $key){
                 $json_p = array();
 
-                $json_p['id_product'] = $key->id_product;
-                $json_p['nama_product'] = $key->nama_product;
-                $json_p['weight'] = $key->weight;
+                $json_p['id_product'] = $key->id_produk;
+                $json_p['nama_product'] = $key->nama_produk;
+                $json_p['weight'] = $key->berat;
                 $json_p['harga'] = $key->harga;
                 $json_p['deskripsi'] = $key->deskripsi;
                 $json_p['foto'] = base_url('doc/foto/').$key->foto;
@@ -59,7 +59,7 @@ class Product extends CI_Controller {
                     $json_k['subkriteria'] = null;
 
                     $where2 = array(
-                        'a.id_product' => $key->id_product,
+                        'a.id_produk' => $key->id_produk,
                         'c.id_kriteria' => $key2->id_kriteria
                     );
                     $subkriteria = $this->ProductSubkriteriaModel->fetch($where2)->result();
@@ -117,9 +117,9 @@ class Product extends CI_Controller {
                 foreach($product as $key){
                     $json_p = array();
 
-                    $json_p['id_product'] = $key->id_product;
-                    $json_p['nama_product'] = $key->nama_product;
-                    $json_p['weight'] = $key->weight;
+                    $json_p['id_product'] = $key->id_produk;
+                    $json_p['nama_product'] = $key->nama_produk;
+                    $json_p['weight'] = $key->berat;
                     $json_p['harga'] = $key->harga;
                     $json_p['deskripsi'] = $key->deskripsi;
                     $json_p['foto'] = base_url('doc/foto/').$key->foto;
@@ -135,7 +135,7 @@ class Product extends CI_Controller {
                         $json_k['subkriteria'] = null;
 
                         $where2 = array(
-                            'a.id_product' => $key->id_product,
+                            'a.id_produk' => $key->id_produk,
                             'c.id_kriteria' => $key2->id_kriteria
                         );
                         $subkriteria = $this->ProductSubkriteriaModel->fetch($where2)->result();
@@ -162,7 +162,7 @@ class Product extends CI_Controller {
 
     public function cek_product($id){
         $where = array(
-            'id_product' => $id
+            'id_produk' => $id
         );
 
         $cek   = $this->ProductModel->fetch($where)->num_rows();

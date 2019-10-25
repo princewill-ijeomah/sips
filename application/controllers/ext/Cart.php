@@ -41,9 +41,9 @@ class Cart extends CI_Controller {
 
                 $json['id'] = $key->id;
                 $json['product'] = array(
-                    'id_product' => $key->id_product,
-                    'nama_product' => $key->nama_product,
-                    'weight' => $key->weight,
+                    'id_product' => $key->id_produk,
+                    'nama_product' => $key->nama_produk,
+                    'weight' => $key->berat,
                     'harga' => $key->harga,
                     'deskripsi' => $key->deskripsi,
                     'foto' => base_url('doc/foto/').$key->foto
@@ -94,7 +94,7 @@ class Cart extends CI_Controller {
             } else {
                 $data = array(
                     'id_user' => $this->auth->id_user,
-                    'id_product' => $this->post('id_product'),
+                    'id_produk' => $this->post('id_product'),
                     'qty' => $this->post('qty')
                 );
 

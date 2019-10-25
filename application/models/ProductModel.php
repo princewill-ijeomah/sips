@@ -6,7 +6,7 @@ class ProductModel extends CI_Model {
 
     function fetch($where)
     {
-      $this->db->select('*')->from('product');
+      $this->db->select('*')->from('produk');
 
       if(!empty($where)){
         foreach($where as $key => $value){
@@ -16,17 +16,17 @@ class ProductModel extends CI_Model {
         }
       }
 
-      $this->db->order_by('id_product', 'desc');
+      $this->db->order_by('id_produk', 'desc');
       return $this->db->get();
     }
 
     function search($where){
       $this->db->select('*');
-      $this->db->from('product_subkriteria a');
+      $this->db->from('produk_subkriteria a');
       $this->db->where_in('a.id_subkriteria', $where);
-      $this->db->group_by('a.id_product');
+      $this->db->group_by('a.id_produk');
       $this->db->having('COUNT(*)', count($where));
-      $this->db->join('product b', 'b.id_product = a.id_product');
+      $this->db->join('produk b', 'b.id_produk = a.id_produk');
      
       return $this->db->get();
     }
@@ -34,10 +34,10 @@ class ProductModel extends CI_Model {
     function add($data, $detail)
     {
       $this->db->trans_start();
-      $this->db->insert('product', $data);
+      $this->db->insert('produk', $data);
 
       if(!empty($detail)){
-          $this->db->insert_batch('product_subkriteria', $detail);
+          $this->db->insert_batch('produk_subkriteria', $detail);
       }
       $this->db->trans_complete();
 
@@ -53,11 +53,11 @@ class ProductModel extends CI_Model {
     function edit($where, $data, $detail)
     {
       $this->db->trans_start();
-      $this->db->where($where)->update('product', $data);
+      $this->db->where($where)->update('produk', $data);
 
       if(!empty($detail)){
-          $this->db->where($where)->delete('product_subkriteria');
-          $this->db->insert_batch('product_subkriteria', $detail);
+          $this->db->where($where)->delete('produk_subkriteria');
+          $this->db->insert_batch('produk_subkriteria', $detail);
       }
 
       $this->db->trans_complete();
@@ -72,7 +72,7 @@ class ProductModel extends CI_Model {
     }
 
     function delete($where){
-        return $this->db->where($where)->delete('product');
+        return $this->db->where($where)->delete('produk');
     }
 
    

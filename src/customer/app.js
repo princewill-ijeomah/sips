@@ -183,13 +183,8 @@ const mainUI = (() => {
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a class="dropdown-item dropdown-toggle" href="#/tentang">
-                                        Tentang
-                                    </a>
-                                </li>
-                                <li class="">
                                     <a class="dropdown-item dropdown-toggle" href="#/product">
-                                        Cari Produk
+                                        Suplemen
                                     </a>
                                 </li>
                                 <li class="">
@@ -239,11 +234,6 @@ const mainUI = (() => {
                                 <li class="">
                                     <a class="dropdown-item dropdown-toggle" href="#/home">
                                         Halaman Utama
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a class="dropdown-item dropdown-toggle" href="#/tentang">
-                                        Tentang
                                     </a>
                                 </li>
                             </ul>

@@ -13,8 +13,8 @@
         </div>
         <div class="col-lg-9" id="result_container">
            <div class="text-center mt-5">
-                <h2 class="text-muted">Silahkan pilih kriteria product yang anda inginkan.</h2>
-                <h4 class="text-muted">Kami akan merekomendasikan product yang sesuai dengan kebutuhan anda</h4>
+                <h2 class="text-muted">Silahkan pilih kriteria suplemen yang anda inginkan.</h2>
+                <h4 class="text-muted">Kami akan merekomendasikan suplemen yang sesuai dengan kebutuhan anda</h4>
            </div>
         </div>
     </div>
