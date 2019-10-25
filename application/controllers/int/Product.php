@@ -156,7 +156,7 @@ class Product extends CI_Controller {
                 $this->response(['status' => false, 'error' => $this->form_validation->error_array()], 400);
             } else {
                 $post = $this->post();
-                $id_product = $this->KodeModel->buat_kode('produk', 'PR-', 'id_produk', 8);
+                $id_product = $this->KodeModel->buat_kode('produk', 'P-', 'id_produk', 3);
 
                 $data = array(
                     'id_produk' => $id_product,

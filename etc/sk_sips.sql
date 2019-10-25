@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Okt 2019 pada 09.35
+-- Waktu pembuatan: 25 Okt 2019 pada 09.44
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.10
 
@@ -56,13 +56,6 @@ CREATE TABLE `konfirmasi` (
   `valid` enum('Y','T','B') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `konfirmasi`
---
-
-INSERT INTO `konfirmasi` (`no_konfirmasi`, `no_transaksi`, `bank`, `bank_pengirim`, `rekening_pengirim`, `nama_pengirim`, `tgl_transfer`, `jml_transfer`, `foto`, `tgl_input`, `valid`) VALUES
-('KNF-0000001', 'TRX-0000001', ' BCA - 1791606298', 'Coba', '12312321', 'Coba', '1992-10-10', 200000, 'KNF-0000001.png', '2019-10-25 06:43:12', 'Y');
-
 -- --------------------------------------------------------
 
 --
@@ -89,20 +82,13 @@ INSERT INTO `kriteria` (`id_kriteria`, `nama_kriteria`) VALUES
 --
 
 CREATE TABLE `produk` (
-  `id_produk` varchar(11) NOT NULL,
+  `id_produk` varchar(5) NOT NULL,
   `nama_produk` varchar(50) NOT NULL,
   `berat` int(4) NOT NULL,
-  `harga` int(11) NOT NULL,
+  `harga` int(7) NOT NULL,
   `deskripsi` text NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `produk`
---
-
-INSERT INTO `produk` (`id_produk`, `nama_produk`, `berat`, `harga`, `deskripsi`, `foto`) VALUES
-('PR-00000001', 'Coba', 2000, 200000, 'Okee', 'PR-00000001.png');
 
 -- --------------------------------------------------------
 
@@ -111,17 +97,9 @@ INSERT INTO `produk` (`id_produk`, `nama_produk`, `berat`, `harga`, `deskripsi`,
 --
 
 CREATE TABLE `produk_subkriteria` (
-  `id_produk` varchar(11) NOT NULL,
+  `id_produk` varchar(5) NOT NULL,
   `id_subkriteria` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `produk_subkriteria`
---
-
-INSERT INTO `produk_subkriteria` (`id_produk`, `id_subkriteria`) VALUES
-('PR-00000001', 27),
-('PR-00000001', 23);
 
 -- --------------------------------------------------------
 
@@ -161,13 +139,6 @@ CREATE TABLE `transaksi` (
   `tgl_transaksi` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `transaksi`
---
-
-INSERT INTO `transaksi` (`no_transaksi`, `id_user`, `alamat_kirim`, `total`, `status`, `tgl_transaksi`) VALUES
-('TRX-0000001', 'USR-0000002', 'Jakarta', 200000, 'Dibayar', '2019-10-25 06:43:12');
-
 -- --------------------------------------------------------
 
 --
@@ -181,13 +152,6 @@ CREATE TABLE `transaksi_detail` (
   `qty` int(3) NOT NULL,
   `total_harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `transaksi_detail`
---
-
-INSERT INTO `transaksi_detail` (`no_transaksi`, `id_produk`, `harga_satuan`, `qty`, `total_harga`) VALUES
-('TRX-0000001', 'PR-00000001', 200000, 1, 200000);
 
 -- --------------------------------------------------------
 
@@ -320,8 +284,8 @@ ALTER TABLE `konfirmasi`
 -- Ketidakleluasaan untuk tabel `produk_subkriteria`
 --
 ALTER TABLE `produk_subkriteria`
-  ADD CONSTRAINT `produk_subkriteria_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `produk_subkriteria_ibfk_2` FOREIGN KEY (`id_subkriteria`) REFERENCES `subkriteria` (`id_subkriteria`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `produk_subkriteria_ibfk_2` FOREIGN KEY (`id_subkriteria`) REFERENCES `subkriteria` (`id_subkriteria`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `produk_subkriteria_ibfk_3` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`) ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `subkriteria`
@@ -339,8 +303,8 @@ ALTER TABLE `transaksi`
 -- Ketidakleluasaan untuk tabel `transaksi_detail`
 --
 ALTER TABLE `transaksi_detail`
-  ADD CONSTRAINT `transaksi_detail_ibfk_1` FOREIGN KEY (`no_transaksi`) REFERENCES `transaksi` (`no_transaksi`) ON DELETE CASCADE,
-  ADD CONSTRAINT `transaksi_detail_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`);
+  ADD CONSTRAINT `transaksi_detail_ibfk_1` FOREIGN KEY (`no_transaksi`) REFERENCES `transaksi` (`no_transaksi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transaksi_detail_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
