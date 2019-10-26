@@ -97,7 +97,7 @@
 											<div class="col-md-6">
 												<div id="login_container">
 													<div class="box-content">
-														<h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Belum punya akun? <button type="button" class="btn btn-md btn-info btn_register">Register</button></h4>
+														<h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Belum punya akun? <button type="button" class="btn btn-md btn-info btn_register">Daftar</button></h4>
 														<form id="form_login">
 															<div class="form-row">
 																<div class="form-group col">
@@ -203,7 +203,7 @@
 
 																</div>
 																<div class="form-group col-lg-3">
-																	<input type="submit" value="Register" class="btn btn-primary float-right">
+																	<input type="submit" value="Daftar" class="btn btn-primary float-right">
 																</div>
 															</div>
 														</form>

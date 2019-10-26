@@ -129,13 +129,13 @@
                             <li>
                                 <a href="#/product" title="Application Intel" data-filter-tags="application intel">
                                     <i class="fal fa-shopping-bag"></i>
-                                    <span class="nav-link-text" data-i18n="nav.application_intel">Product</span>
+                                    <span class="nav-link-text" data-i18n="nav.application_intel">Suplemen</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#/customer" title="Application Intel" data-filter-tags="application intel">
                                     <i class="fal fa-user"></i>
-                                    <span class="nav-link-text" data-i18n="nav.application_intel">Customer</span>
+                                    <span class="nav-link-text" data-i18n="nav.application_intel">Pelanggan</span>
                                 </a>
                             </li>
                             <li>

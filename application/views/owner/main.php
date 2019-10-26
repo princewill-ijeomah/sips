@@ -129,7 +129,7 @@
                             <li>
                                 <a href="#/user" title="Application Intel" data-filter-tags="application intel">
                                     <i class="fal fa-user"></i>
-                                    <span class="nav-link-text" data-i18n="nav.application_intel">User</span>
+                                    <span class="nav-link-text" data-i18n="nav.application_intel">Kasir</span>
                                 </a>
                             </li>
                             <li>

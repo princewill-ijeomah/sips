@@ -1,11 +1,11 @@
 <ol class="breadcrumb page-breadcrumb">
     <li class="breadcrumb-item"><a  href="#/dashboard">Dashboard</a></li>
-    <li class="breadcrumb-item active">Product</li>
+    <li class="breadcrumb-item active">Suplemen</li>
     <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
 </ol>
 <div class="subheader">
     <h1 class="subheader-title">
-        <i class='subheader-icon fal fa-'></i> Product 
+        <i class='subheader-icon fal fa-'></i> Suplemen 
     </h1>
     <div class="subheader-block">
         <a href="#/product/add" class="btn btn-info btn-md"><i class="fal fa-plus"></i> Tambah</a>
@@ -16,7 +16,7 @@
         <div id="panel-1" class="panel">
             <div class="panel-hdr">
                 <h2>
-                    Data Product
+                    Data Suplemen
                 </h2>
                 <div class="panel-toolbar">
                     <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
@@ -29,7 +29,7 @@
                         <table class="table table-bordered table-hover table-striped w-100" id="t_product">
                             <thead>
                                 <tr>
-                                    <th>ProductID</th>
+                                    <th>SuplemenID</th>
                                     <th>Nama</th>
                                     <th>Berat</th>
                                     <th>Harga</th>

@@ -100,7 +100,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="actions-continue">
-                            <button type="submit" class="btn btn-primary btn-modern text-uppercase">Proceed to Checkout <i class="fas fa-angle-right ml-1"></i></button>
+                            <button type="submit" class="btn btn-primary btn-modern text-uppercase">Lanjut <i class="fas fa-angle-right ml-1"></i></button>
                         </div>
                     </div>
                 </div>

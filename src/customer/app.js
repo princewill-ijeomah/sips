@@ -189,7 +189,7 @@ const mainUI = (() => {
                                 </li>
                                 <li class="">
                                     <a class="dropdown-item dropdown-toggle" href="#/transaksi">
-                                        History Transaksi
+                                        Riwayat Pesanan
                                     </a>
                                 </li>
                             </ul>
@@ -923,7 +923,7 @@ const transaksiController = (() => {
                             `
                         } else {
                             return `
-                                <a href="#/checkout/${row.no_transaksi}" class="btn btn-success btn-sm">Checkout</a>
+                                <a href="#/checkout/${row.no_transaksi}" class="btn btn-success btn-sm">Konfirmasi Pembayaran</a>
                             `
                         }
                     }

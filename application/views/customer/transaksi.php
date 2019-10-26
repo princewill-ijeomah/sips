@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="col p-static">
-                <h1 data-title-border>History Transaksi</h1>
+                <h1 data-title-border>Riwayat Pesanan</h1>
 
             </div>
         </div>

@@ -1,11 +1,11 @@
 <ol class="breadcrumb page-breadcrumb">
     <li class="breadcrumb-item"><a  href="#/dashboard">Dashboard</a></li>
-    <li class="breadcrumb-item active">User</li>
+    <li class="breadcrumb-item active">Kasir</li>
     <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
 </ol>
 <div class="subheader">
     <h1 class="subheader-title">
-        <i class='subheader-icon fal fa-'></i> User 
+        <i class='subheader-icon fal fa-'></i> Kasir 
     </h1>
     <div class="subheader-block">
         <button class="btn btn-info btn-md btn_add"><i class="fal fa-plus"></i> Tambah</button>
@@ -17,7 +17,7 @@
         <div id="panel-1" class="panel">
             <div class="panel-hdr">
                 <h2>
-                    Data User
+                    Data Kasir
                 </h2>
                 <div class="panel-toolbar">
                     <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
