@@ -38,7 +38,7 @@ $(function () {
         responsive: true,
         processing: true,
         ajax: {
-            url: `${BASE_URL}int/user`,
+            url: `${BASE_URL}int/customer`,
             type: 'GET',
             dataType: 'JSON',
             beforeSend: xhr => {

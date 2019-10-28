@@ -53,7 +53,7 @@
             <div id="panel_kriteria" class="panel">
                 <div class="panel-hdr">
                     <h2>
-                        Kategori Product
+                        Kategori Suplemen
                     </h2>
                 </div>
                 <div class="panel-container show">
