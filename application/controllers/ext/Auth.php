@@ -144,7 +144,7 @@ class Auth extends CI_Controller {
                 'level' => 'Customer'
             );
 
-            // $this->load->library('email');
+            $this->load->library('email');
 
             // $config = array(
             //     'protocol'  => 'smtp',
