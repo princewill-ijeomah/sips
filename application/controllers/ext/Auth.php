@@ -146,18 +146,18 @@ class Auth extends CI_Controller {
 
             $this->load->library('email');
 
-            // $config = array(
-            //     'protocol'  => 'smtp',
-            //     'smtp_host' => 'ssl://smtp.googlemail.com',
-            //     'smtp_port' => 465,
-            //     'smtp_user' => 'adm.titan001@gmail.com',
-            //     'smtp_pass' => 'cintaku1',
-            //     'mailtype'  => 'html',
-            //     'charset'   => 'utf-8'
-            // );
-            // $this->email->initialize($config);
-            // $this->email->set_mailtype("html");
-            // $this->email->set_newline("\r\n");
+            $config = array(
+                'protocol'  => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'adm.titan001@gmail.com',
+                'smtp_pass' => 'cintaku1',
+                'mailtype'  => 'html',
+                'charset'   => 'utf-8'
+            );
+            $this->email->initialize($config);
+            $this->email->set_mailtype("html");
+            $this->email->set_newline("\r\n");
 
             // $template = $this->load->view('email/konfirmasi', $mail_data, TRUE);
 
