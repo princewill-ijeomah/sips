@@ -77,11 +77,12 @@ class Aktivasi extends CI_Controller {
                     'messages' => 'Silahkan mengisi form yang tersedia',
                     'id_user' => $this->session->userdata('id_user')
                 );
+
+                $this->session->unset_userdata($session);
             }
         }
 
         $this->load->view('email/change_password', $result);
-        $this->session->unset_userdata($session);
     }
 
     function update_password() {
