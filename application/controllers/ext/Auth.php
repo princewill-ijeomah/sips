@@ -150,8 +150,8 @@ class Auth extends CI_Controller {
                 'protocol'  => 'smtp',
                 'smtp_host' => 'ssl://smtp.googlemail.com',
                 'smtp_port' => 465,
-                'smtp_user' => 'adm.titan001@gmail.com',
-                'smtp_pass' => 'cintaku1',
+                'smtp_user' => 'sk.stmik2019@gmail.com',
+                'smtp_pass' => 'stmik2019',
                 'mailtype'  => 'html',
                 'charset'   => 'utf-8'
             );
@@ -162,7 +162,7 @@ class Auth extends CI_Controller {
             $template = $this->load->view('email/konfirmasi', $mail_data, TRUE);
 
             $this->email->to($this->post('email'));
-            $this->email->from('adm.titan001@gmail.com','Admin Duta Gym');
+            $this->email->from('sk.stmik2019@gmail.com','Admin Duta Gym');
             $this->email->subject('Aktivasi Akun Duta Gym');
             $this->email->message($template);
 
