@@ -122,13 +122,13 @@ class Auth extends CI_Controller {
             
             $id_user = $this->KodeModel->buat_kode('user', 'USR-', 'id_user', 7);
 
-            $mail_data = array(
-                'id_user' => $id_user,
-                'nama_lengkap' => $this->post('nama_lengkap'),
-                'username' => $this->post('username'),
-                'email' => $this->post('email'),
-                'token' => substr(str_shuffle("01234567890abcdefghijklmnopqestuvwxyz"), 0, 15)
-            );
+            // $mail_data = array(
+            //     'id_user' => $id_user,
+            //     'nama_lengkap' => $this->post('nama_lengkap'),
+            //     'username' => $this->post('username'),
+            //     'email' => $this->post('email'),
+            //     'token' => substr(str_shuffle("01234567890abcdefghijklmnopqestuvwxyz"), 0, 15)
+            // );
 
             $data = array(
                 'id_user' => $id_user,
@@ -144,33 +144,33 @@ class Auth extends CI_Controller {
                 'level' => 'Customer'
             );
 
-            $this->load->library('email');
+            // $this->load->library('email');
 
-            $config = array(
-                'protocol'  => 'smtp',
-                'smtp_host' => 'ssl://smtp.googlemail.com',
-                'smtp_port' => 465,
-                'smtp_user' => 'adm.titan001@gmail.com',
-                'smtp_pass' => 'cintaku1',
-                'mailtype'  => 'html',
-                'charset'   => 'utf-8'
-            );
-            $this->email->initialize($config);
-            $this->email->set_mailtype("html");
-            $this->email->set_newline("\r\n");
+            // $config = array(
+            //     'protocol'  => 'smtp',
+            //     'smtp_host' => 'ssl://smtp.googlemail.com',
+            //     'smtp_port' => 465,
+            //     'smtp_user' => 'adm.titan001@gmail.com',
+            //     'smtp_pass' => 'cintaku1',
+            //     'mailtype'  => 'html',
+            //     'charset'   => 'utf-8'
+            // );
+            // $this->email->initialize($config);
+            // $this->email->set_mailtype("html");
+            // $this->email->set_newline("\r\n");
 
-            $template = $this->load->view('email/konfirmasi', $mail_data, TRUE);
+            // $template = $this->load->view('email/konfirmasi', $mail_data, TRUE);
 
-            $this->email->to($this->post('email'));
-            $this->email->from('adm.titan001@gmail.com','Admin Duta Gym');
-            $this->email->subject('Aktivasi Akun Duta Gym');
-            $this->email->message($template);
+            // $this->email->to($this->post('email'));
+            // $this->email->from('adm.titan001@gmail.com','Admin Duta Gym');
+            // $this->email->subject('Aktivasi Akun Duta Gym');
+            // $this->email->message($template);
 
-            $send = $this->email->send();
+            // $send = $this->email->send();
 
-            if (!$send) {
-                json_output(400, array('status' => 400, 'description' => 'Gagal', 'message' => 'Tidak dapat mengirim email'));
-            } else {
+            // if (!$send) {
+            //     json_output(400, array('status' => 400, 'description' => 'Gagal', 'message' => 'Tidak dapat mengirim email'));
+            // } else {
                 $add = $this->UserModel->add($data);
 
                 if(!$add){
@@ -179,7 +179,7 @@ class Auth extends CI_Controller {
                     // $this->session->set_userdata($mail_data);
                     $this->response(['status' => true, 'message' => 'Berhasil registrasi user'], 200);
                 }
-            }
+            // }
         }
     }
 
