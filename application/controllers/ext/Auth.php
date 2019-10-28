@@ -176,7 +176,7 @@ class Auth extends CI_Controller {
                 if(!$add){
                     $this->response(['status' => false, 'message' => 'Gagal registrasi user'], 500);
                 } else {
-                    $this->session->set_userdata($mail_data);
+                    // $this->session->set_userdata($mail_data);
                     $this->response(['status' => true, 'message' => 'Berhasil registrasi user'], 200);
                 }
             }
