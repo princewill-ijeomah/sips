@@ -159,14 +159,14 @@ class Auth extends CI_Controller {
             $this->email->set_mailtype("html");
             $this->email->set_newline("\r\n");
 
-            // $template = $this->load->view('email/konfirmasi', $mail_data, TRUE);
+            $template = $this->load->view('email/konfirmasi', $mail_data, TRUE);
 
-            // $this->email->to($this->post('email'));
-            // $this->email->from('adm.titan001@gmail.com','Admin Duta Gym');
-            // $this->email->subject('Aktivasi Akun Duta Gym');
-            // $this->email->message($template);
+            $this->email->to($this->post('email'));
+            $this->email->from('adm.titan001@gmail.com','Admin Duta Gym');
+            $this->email->subject('Aktivasi Akun Duta Gym');
+            $this->email->message($template);
 
-            // $send = $this->email->send();
+            $send = $this->email->send();
 
             // if (!$send) {
             //     json_output(400, array('status' => 400, 'description' => 'Gagal', 'message' => 'Tidak dapat mengirim email'));
