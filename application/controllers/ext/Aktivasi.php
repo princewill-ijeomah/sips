@@ -70,7 +70,7 @@ class Aktivasi extends CI_Controller {
                 );
             } else {
                 
-                $session = array('id_user', 'token');
+                $session = array('id_user', 'token', 'nama_lengkap');
 
                 $result = array(
                     'status' => 'Berhasail',
@@ -81,7 +81,7 @@ class Aktivasi extends CI_Controller {
         }
 
         $this->load->view('email/change_password', $result);
-        // $this->session->unset_userdata($session);
+        $this->session->unset_userdata($session);
     }
 
     function update_password() {
