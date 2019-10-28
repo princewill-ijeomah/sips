@@ -171,14 +171,14 @@ class Auth extends CI_Controller {
             if (!$send) {
                 json_output(400, array('status' => 400, 'description' => 'Gagal', 'message' => 'Tidak dapat mengirim email'));
             } else {
-                // $add = $this->UserModel->add($data);
+                $add = $this->UserModel->add($data);
 
-                // if(!$add){
-                    // $this->response(['status' => false, 'message' => 'Gagal registrasi user'], 500);
-                // } else {
-                //     $this->session->set_userdata($mail_data);
+                if(!$add){
+                    $this->response(['status' => false, 'message' => 'Gagal registrasi user'], 500);
+                } else {
+                    $this->session->set_userdata($mail_data);
                     $this->response(['status' => true, 'message' => 'Berhasil registrasi user'], 200);
-                // }
+                }
             }
         }
     }
