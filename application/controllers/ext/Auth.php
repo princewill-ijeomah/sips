@@ -122,13 +122,13 @@ class Auth extends CI_Controller {
             
             $id_user = $this->KodeModel->buat_kode('user', 'USR-', 'id_user', 7);
 
-            // $mail_data = array(
-            //     'id_user' => $id_user,
-            //     'nama_lengkap' => $this->post('nama_lengkap'),
-            //     'username' => $this->post('username'),
-            //     'email' => $this->post('email'),
-            //     'token' => substr(str_shuffle("01234567890abcdefghijklmnopqestuvwxyz"), 0, 15)
-            // );
+            $mail_data = array(
+                'id_user' => $id_user,
+                'nama_lengkap' => $this->post('nama_lengkap'),
+                'username' => $this->post('username'),
+                'email' => $this->post('email'),
+                'token' => substr(str_shuffle("01234567890abcdefghijklmnopqestuvwxyz"), 0, 15)
+            );
 
             $data = array(
                 'id_user' => $id_user,
@@ -176,7 +176,7 @@ class Auth extends CI_Controller {
                 if(!$add){
                     $this->response(['status' => false, 'message' => 'Gagal registrasi user'], 500);
                 } else {
-                    // $this->session->set_userdata($mail_data);
+                    $this->session->set_userdata($mail_data);
                     $this->response(['status' => true, 'message' => 'Berhasil registrasi user'], 200);
                 }
             // }
