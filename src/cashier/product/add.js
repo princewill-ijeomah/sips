@@ -91,6 +91,7 @@ $(function(){
                     'weight': 'required',
                     'harga': 'required',
                     'deskripsi': 'required',
+                    'stok': 'required',
                     'foto': 'required',
                 },
                 messages: {
@@ -98,6 +99,7 @@ $(function(){
                     'weight': 'Field wajib diisi',
                     'harga': 'Field wajib diisi',
                     'deskripsi': 'Field wajib diisi',
+                    'stok': 'Field wajib diisi',
                     'foto': 'Field wajib diisi',
                 },
                 submitHandler: form => {

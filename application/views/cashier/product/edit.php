@@ -38,6 +38,10 @@
                             <input type="number" class="form-control" name="harga" id="harga">
                         </div>
                         <div class="form-group">
+                            <label for="">Stok</label>
+                            <input type="number" class="form-control" name="stok" id="stok">
+                        </div>
+                        <div class="form-group">
                             <label for="">Deskripsi</label>
                             <textarea class="form-control" name="deskripsi" id="deskripsi"></textarea>
                         </div>

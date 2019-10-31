@@ -18,6 +18,7 @@ $(function () {
             nama_product: '#nama_product',
             weight: '#weight',
             harga: '#harga',
+            stok: '#stok',
             deskripsi: '#deskripsi'
         }
     }
@@ -35,6 +36,7 @@ $(function () {
                 $(input.weight).val(data.weight);
                 $(input.harga).val(data.harga);
                 $(input.deskripsi).val(data.deskripsi);
+                $(input.stok).val(data.stok);
 
                 const subkriteria = data.kriteria.filter(v => v.subkriteria !== null).map(k => {
                     return k.subkriteria.id_subkriteria
@@ -154,12 +156,14 @@ $(function () {
                     'weight': 'required',
                     'harga': 'required',
                     'deskripsi': 'required',
+                    'stok': 'required',
                 },
                 messages: {
                     'nama_product': 'Field wajib diisi',
                     'weight': 'Field wajib diisi',
                     'harga': 'Field wajib diisi',
                     'deskripsi': 'Field wajib diisi',
+                    'stok': 'Field wajib diisi',
                 },
                 submitHandler: form => {
                     $.ajax({

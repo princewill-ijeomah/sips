@@ -87,6 +87,9 @@ $(function(){
                 }
             },
             {
+                data: "stok"
+            },
+            {
                 data: null, render: (data, type, row) => {
                     let html = ''
                     let {kriteria} = row

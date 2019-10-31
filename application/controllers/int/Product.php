@@ -45,6 +45,7 @@ class Product extends CI_Controller {
                 $json_p['nama_product'] = $key->nama_produk;
                 $json_p['weight'] = $key->berat;
                 $json_p['harga'] = $key->harga;
+                $json_p['stok'] = $key->stok;
                 $json_p['deskripsi'] = $key->deskripsi;
                 $json_p['foto'] = base_url('doc/foto/').$key->foto;
                 $json_p['kriteria'] = array();
@@ -143,6 +144,11 @@ class Product extends CI_Controller {
                     'rules' => 'required|trim'
                 ),
                 array(
+                    'field' => 'stok',
+                    'label' => 'Stok',
+                    'rules' => 'required|trim'
+                ),
+                array(
                     'field' => 'id_subkriteria[]',
                     'label' => 'Subkriteria',
                     'rules' => 'required|trim'
@@ -164,6 +170,7 @@ class Product extends CI_Controller {
                     'berat' => $this->post('weight'),
                     'harga' => $this->post('harga'),
                     'deskripsi' => $this->post('deskripsi'),
+                    'stok' => $this->post('stok'),
                     'foto' => $this->upload_foto('foto', $id_product)
                 );
 
@@ -221,6 +228,11 @@ class Product extends CI_Controller {
                     'rules' => 'required|trim'
                 ),
                 array(
+                    'field' => 'stok',
+                    'label' => 'Stok',
+                    'rules' => 'required|trim'
+                ),
+                array(
                     'field' => 'id_subkriteria[]',
                     'label' => 'Subkriteria',
                     'rules' => 'required|trim'
@@ -243,6 +255,7 @@ class Product extends CI_Controller {
                     'nama_produk' => $this->post('nama_product'),
                     'berat' => $this->post('weight'),
                     'harga' => $this->post('harga'),
+                    'stok' => $this->post('stok'),
                     'deskripsi' => $this->post('deskripsi'),
                 );
 

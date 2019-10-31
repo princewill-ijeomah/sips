@@ -45,6 +45,7 @@ class Product extends CI_Controller {
                 $json_p['nama_product'] = $key->nama_produk;
                 $json_p['weight'] = $key->berat;
                 $json_p['harga'] = $key->harga;
+                $json_p['stok'] = $key->stok;
                 $json_p['deskripsi'] = $key->deskripsi;
                 $json_p['foto'] = base_url('doc/foto/').$key->foto;
                 $json_p['kriteria'] = array();
@@ -121,6 +122,7 @@ class Product extends CI_Controller {
                     $json_p['nama_product'] = $key->nama_produk;
                     $json_p['weight'] = $key->berat;
                     $json_p['harga'] = $key->harga;
+                    $json_p['stok'] = $key->stok;
                     $json_p['deskripsi'] = $key->deskripsi;
                     $json_p['foto'] = base_url('doc/foto/').$key->foto;
                     $json_p['kriteria'] = array();

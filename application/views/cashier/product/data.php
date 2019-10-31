@@ -34,6 +34,7 @@
                                     <th>Berat</th>
                                     <th>Harga</th>
                                     <th>Deskripsi</th>
+                                    <th>Stok</th>
                                     <th>Subkriteria</th>
                                     <th>Foto</th>
                                     <th>Aksi</th>

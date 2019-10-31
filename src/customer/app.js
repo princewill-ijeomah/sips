@@ -1001,6 +1001,7 @@ const productUI = (() => {
                                 </p>
 
                                 <p class="mb-5">${v.deskripsi.replace(/(\r\n|\n|\r)/gm, '<br>')}</p>
+                                <p>Jumlah stok tersedia : <b class="text-info">${v.stok} Pcs</b></p>
 
                                 <form class="cart">
                                     <div class="quantity quantity-lg">
